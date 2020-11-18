@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         //initialize actionBar
         actionBar = getSupportActionBar();
 
@@ -80,5 +81,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(cardAdapter);
         //set default padding
         viewPager.setPadding(100, 0, 100, 0);
+=======
+>>>>>>> a213564... add Ingredient, Recipe, and Cookbook classes
     }
 }
