@@ -64,7 +64,7 @@ public class CardAdapter extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener(){
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Toast.makeText(context, "View recipes", Toast.LENGTH_SHORT).show();
             }
         });
@@ -72,7 +72,7 @@ public class CardAdapter extends PagerAdapter {
         //add view to container
         container.addView(view, position);
 
-        return super.instantiateItem(container, position);
+        return view;
     }
 
     @Override
