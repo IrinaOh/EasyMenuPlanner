@@ -5,4 +5,8 @@
     <string name="nav_home">Home</string>
     <string name="nav_dayPlan">Today\'s Plan</string>
     <string name="nav_cookbook">Cookbook</string>
+    <string name="dayplan_breakfast">Breakfast</string>
+    <string name="dayplan_lunch">Lunch</string>
+    <string name="dayplan_dinner">Diner</string>
+    <string name="dayplan_date">20 November 2020</string>
 </resources>
