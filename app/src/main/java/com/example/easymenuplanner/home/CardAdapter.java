@@ -6,12 +6,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.easymenuplanner.R;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
+    private List<Card> dayCards = new ArrayList<>();
 
+    /*
     private String[] descriptions = {"You have no recipes selected",
             "You have no recipes selected",
             "You have no recipes selected"};
@@ -23,6 +26,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
             "November 25, 2020"};
 
     private int[] images = {R.drawable.monday, R.drawable.tuesday, R.drawable.wednesday};
+    */
+
+    public CardAdapter() {
+        dayCards.add(new Card("November 23, 2020", "You have no recipes selected","Chicken", R.drawable.monday));
+        dayCards.add(new Card("November 24, 2020", "You have no recipes selected","Chicken", R.drawable.tuesday));
+        dayCards.add(new Card("November 25, 2020", "You have no recipes selected","Chicken", R.drawable.wednesday));
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -38,15 +48,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
-        holder.getBannerView().setImageResource(images[position]);
-        holder.getDateView().setText(dates[position]);
-        holder.getDescriptionView().setText(descriptions[position]);
-        holder.getDateView().setText(dates[position]);
-
+        holder.getBannerView().setImageResource(dayCards.get(position).image);
+        holder.getDateView().setText(dayCards.get(position).date);
+        holder.getDescriptionView().setText(dayCards.get(position).description);
+        holder.getDateView().setText(dayCards.get(position).date);
     }
 
     @Override
     public int getItemCount() {
         return 3;
     }
+
 }
