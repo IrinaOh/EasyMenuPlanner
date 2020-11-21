@@ -1,4 +1,4 @@
-package com.example.easymenuplanner;
+package com.example.easymenuplanner.home;
 
 public class Card {
     String date, description, tag;
