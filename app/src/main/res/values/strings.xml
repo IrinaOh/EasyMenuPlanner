@@ -9,4 +9,9 @@
     <string name="dayplan_lunch">Lunch</string>
     <string name="dayplan_dinner">Diner</string>
     <string name="dayplan_date">20 November 2020</string>
+    <string name="searchText"></string>
+    <string name="recipeName_text">Recipe</string>
+    <string name="numServings_text">Number of Servings:</string>
+    <string name="numberServing">4</string>
+
 </resources>
