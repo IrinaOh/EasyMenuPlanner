@@ -11,16 +11,26 @@ import com.example.easymenuplanner.R;
 
 public class CookbookViewHolder extends RecyclerView.ViewHolder {
 
+    ImageView recipeImage;
     TextView recipeName_textView;
     TextView numServingLabel_textView;
     TextView numServingValue_textView;
+    TextView description_textView;
 
     public CookbookViewHolder(@NonNull View itemView) {
         super(itemView);
         recipeName_textView = itemView.findViewById(R.id.recipeName_textView);
-        numServingLabel_textView = itemView.findViewById(R.id.numServingLabel_textView);
-        numServingValue_textView = itemView.findViewById(R.id.numServingValue_textView);
+        description_textView = itemView.findViewById(R.id.description_textView);
+        numServingLabel_textView = itemView.findViewById(R.id.numServingsLabel_textView);
+        numServingValue_textView = itemView.findViewById(R.id.numServingsValue_textView);
+    }
 
+    public ImageView getRecipeImage() {
+        return recipeImage;
+    }
+
+    public TextView getDescription_textView() {
+        return description_textView;
     }
 
     public TextView getRecipeName_textView() {

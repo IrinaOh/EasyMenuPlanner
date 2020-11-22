@@ -1,5 +1,5 @@
-package com.example.easymenuplanner;
-
+package com.example.easymenuplanner.recipe;
+import com.example.easymenuplanner.R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +11,7 @@ public class Recipe {
     private int numServings;
     private int cookTime;
     private int prepTime;
+    private int recipePic;
 
 
     public Recipe() {
@@ -25,8 +26,9 @@ public class Recipe {
         this.numServings = numServings;
         ingredients = new ArrayList<>();
         instructions = new ArrayList<>();
-        int cookTime = 20;
-        int prepTime = 20;
+        cookTime = 20;
+        prepTime = 20;
+        recipePic = R.drawable.ic_baseline_image_holder;
     }
 
     public void addIngredient(Ingredient newIngredient) {
@@ -51,5 +53,9 @@ public class Recipe {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getRecipePic() {
+        return recipePic;
     }
 }

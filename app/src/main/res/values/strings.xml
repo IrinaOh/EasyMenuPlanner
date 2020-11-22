@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_home">Home</string>
-    <string name="nav_dayPlan">Today\'s Plan</string>
+    <string name="nav_dayPlan">Today\'s Menu</string>
     <string name="nav_cookbook">Cookbook</string>
     <string name="dayplan_breakfast">Breakfast</string>
     <string name="dayplan_lunch">Lunch</string>
@@ -11,7 +11,11 @@
     <string name="dayplan_date">20 November 2020</string>
     <string name="searchText"></string>
     <string name="recipeName_text">Recipe</string>
-    <string name="numServings_text">Number of Servings:</string>
-    <string name="numberServing">4</string>
+    <string name="numServingsLabel_text">Number of Servings:</string>
+    <string name="numberServingValue_text">4</string>
+    <string name="recipeDescription">This is a great dish</string>
+    <string name="ingredientTitle">Ingredients</string>
+    <string name="instructionsTitle">Cooking Instructions</string>
+    <string name="quantity">\frac{1}{2}</string>
 
 </resources>
