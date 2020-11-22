@@ -1,4 +1,4 @@
-package com.example.easymenuplanner;
+package com.example.easymenuplanner.recipe;
 
 public class Ingredient {
     private String unit;

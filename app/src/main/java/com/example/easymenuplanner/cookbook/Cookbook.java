@@ -1,6 +1,6 @@
 package com.example.easymenuplanner.cookbook;
 
-import com.example.easymenuplanner.Recipe;
+import com.example.easymenuplanner.recipe.Recipe;
 
 import java.util.ArrayList;
 import java.util.List;
