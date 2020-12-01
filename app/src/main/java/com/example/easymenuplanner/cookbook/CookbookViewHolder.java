@@ -1,47 +1,47 @@
 package com.example.easymenuplanner.cookbook;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
+import com.example.easymenuplanner.recipe.Recipe;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CookbookViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView recipeImage;
     TextView recipeName_textView;
-    TextView numServingLabel_textView;
     TextView numServingValue_textView;
     TextView description_textView;
+    Recipe recipe;
 
     public CookbookViewHolder(@NonNull View itemView) {
         super(itemView);
         recipeName_textView = itemView.findViewById(R.id.recipeName_textView);
         description_textView = itemView.findViewById(R.id.description_textView);
-        numServingLabel_textView = itemView.findViewById(R.id.numServingsLabel_textView);
         numServingValue_textView = itemView.findViewById(R.id.numServingsValue_textView);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+
+                CookbookFragmentDirections.ActionNavCookbookToNavRecipe action =
+                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
+
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+
     }
 
-    public ImageView getRecipeImage() {
-        return recipeImage;
+    public void bindData(Recipe recipe) {
+        this.recipe = recipe;
+        recipeName_textView.setText(recipe.getRecipeName());
+        description_textView.setText(recipe.getDescription());
+        numServingValue_textView.setText(String.valueOf(recipe.getNumServings()));
     }
 
-    public TextView getDescription_textView() {
-        return description_textView;
-    }
 
-    public TextView getRecipeName_textView() {
-        return recipeName_textView;
-    }
-
-    public TextView getNumServingLabel_textView() {
-        return numServingLabel_textView;
-    }
-
-    public TextView getNumServingValue_textView() {
-        return numServingValue_textView;
-    }
 }

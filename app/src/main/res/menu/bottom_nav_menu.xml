@@ -7,7 +7,7 @@
         android:title="@string/nav_home" />
 
     <item
-        android:id="@+id/navigation_dayPlan"
+        android:id="@+id/navigation_menu"
         android:icon="@drawable/ic_baseline_today"
         android:title="@string/nav_dayPlan" />
 
