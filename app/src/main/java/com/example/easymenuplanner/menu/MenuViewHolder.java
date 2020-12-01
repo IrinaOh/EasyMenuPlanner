@@ -21,6 +21,21 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         recipeName = itemView.findViewById(R.id.tvRecipeName);
 
+        /*
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+
+                if () {
+                    // Go to Cookbook
+                } else {
+                    // Go to Recipe view
+                }
+
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+        
+         */
 
 
     }
