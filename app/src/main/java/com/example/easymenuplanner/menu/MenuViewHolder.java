@@ -19,7 +19,9 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
 
     public MenuViewHolder(@NonNull View itemView) {
         super(itemView);
-        recipeName = itemView.findViewById(R.id.tv_menu_item);
+        recipeName = itemView.findViewById(R.id.tvRecipeName);
+
+
 
     }
 
