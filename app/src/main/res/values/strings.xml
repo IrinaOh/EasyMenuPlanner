@@ -16,6 +16,8 @@
     <string name="recipeDescription">This is a great dish</string>
     <string name="ingredientTitle">Ingredients</string>
     <string name="instructionsTitle">Cooking Instructions</string>
+    <string name="instructionNumber">1.</string>
     <string name="quantity">\frac{1}{2}</string>
-
+    <string name="junkText">Junky</string>
+    <string name="bullet"></string>
 </resources>

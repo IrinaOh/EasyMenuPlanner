@@ -3,8 +3,11 @@ package com.example.easymenuplanner.home;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.easymenuplanner.R;
+import androidx.navigation.Navigation;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
@@ -19,6 +22,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
         dateM = itemView.findViewById(R.id.dateM);
         descriptionM = itemView.findViewById(R.id.descriptionM);
         tagM = itemView.findViewById(R.id.tagM);
+
 
     }
 

@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/card_view"
-    android:layout_margin="5dp"
+    android:layout_margin="1dp"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
     app:cardElevation="3dp"
     app:contentPadding="4dp"
-    android:foreground="?selectableItemBackground"
-    android:clickable="true">
+    app:cardBackgroundColor="#EFEEFF"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="0dp">
 
         <TextView
             android:id="@+id/recipeName_textView"

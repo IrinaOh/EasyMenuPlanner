@@ -9,50 +9,37 @@
         android:id="@+id/navigation_home"
         android:name="com.example.easymenuplanner.home.HomeFragment"
         android:label="Easy Menu Planner"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_dayPlan"
-            app:destination="@id/navigation_dayPlan" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_dayPlan"
-        android:name="com.example.easymenuplanner.dayPlan.DayPlanFragment"
-        android:label="Menu"
-        tools:layout="@layout/fragment_day_plan" >
-        <action
-            android:id="@+id/action_navigation_dayPlan_to_navigation_cookbook"
-            app:destination="@id/navigation_cookbook" />
-        <action
-            android:id="@+id/action_navigation_dayPlan_to_navigation_recipe"
-            app:destination="@id/navigation_recipe" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_cookbook"
         android:name="com.example.easymenuplanner.cookbook.CookbookFragment"
         android:label="Cookbook"
         tools:layout="@layout/fragment_cookbook" >
         <action
-            android:id="@+id/action_navigation_cookbook_to_navigation_recipe"
+            android:id="@+id/action_navCookbook_to_navRecipe"
             app:destination="@id/navigation_recipe" />
-        <action
-            android:id="@+id/action_navigation_cookbook_to_navigation_dayPlan2"
-            app:destination="@id/navigation_dayPlan" />
-        <action
-            android:id="@+id/action_navigation_cookbook_to_addRecipeFragment"
-            app:destination="@id/addRecipeFragment" />
+        <argument
+            android:name="isAddRecipe"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/navigation_recipe"
         android:name="com.example.easymenuplanner.recipe.RecipeFragment"
         android:label="Recipe"
-        tools:layout="@layout/fragment_recipe" />
+        tools:layout="@layout/fragment_recipe" >
+        <argument
+            android:name="recipe"
+            app:argType="com.example.easymenuplanner.recipe.Recipe" />
+    </fragment>
     <fragment
         android:id="@+id/addRecipeFragment"
         android:name="com.example.easymenuplanner.addRecipe.AddRecipeFragment"
         android:label="fragment_add_recipe"
-        tools:layout="@layout/fragment_add_recipe" >
-        <action
-            android:id="@+id/action_addRecipeFragment_to_navigation_cookbook"
-            app:destination="@id/navigation_cookbook" />
-    </fragment>
+        tools:layout="@layout/fragment_add_recipe" />
+    <fragment
+        android:id="@+id/navigation_menu"
+        android:name="com.example.easymenuplanner.menu.MenuFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu" />
 </navigation>
