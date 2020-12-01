@@ -17,6 +17,7 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
     TextView numServingValue_textView;
     TextView description_textView;
     Recipe recipe;
+    boolean addToMenu = false;
 
     public CookbookViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -26,7 +27,9 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
+                // if addToMenu == true
 
+                // else
                 CookbookFragmentDirections.ActionNavCookbookToNavRecipe action =
                         CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
 
