@@ -49,10 +49,11 @@
     <fragment
         android:id="@+id/addRecipeFragment"
         android:name="com.example.easymenuplanner.addRecipe.AddRecipeFragment"
-        android:label="fragment_add_recipe"
-        tools:layout="@layout/fragment_add_recipe" >
+        android:label="Add Recipe"
+        tools:layout="@layout/fragment_add_recipe">
         <action
             android:id="@+id/action_addRecipeFragment_to_navigation_cookbook"
-            app:destination="@id/navigation_cookbook" />
+            app:destination="@id/navigation_cookbook"
+             />
     </fragment>
 </navigation>
