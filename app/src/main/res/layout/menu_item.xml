@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_menu_item"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="170dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -29,8 +29,8 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginEnd="137dp"
-                android:layout_marginRight="137dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginRight="100dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/recipeName_text"
                 android:textSize="18sp"
@@ -49,6 +49,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="36dp"
                 android:text="TextView"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvRecipeName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -57,12 +58,13 @@
                 android:id="@+id/addRecipebButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="250dp"
-                android:layout_marginLeft="250dp"
+                android:layout_marginStart="210dp"
+                android:layout_marginLeft="210dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginBottom="16dp"
-                android:text="Button"
+                android:text="Add Recipe"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
