@@ -20,4 +20,5 @@
     <string name="quantity">\frac{1}{2}</string>
     <string name="junkText">Junky</string>
     <string name="bullet"></string>
+    <string name="ellipsis">drop down menu</string>
 </resources>
