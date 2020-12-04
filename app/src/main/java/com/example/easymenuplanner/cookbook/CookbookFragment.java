@@ -68,7 +68,7 @@ public class CookbookFragment extends Fragment {
             CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
             meal = args.getMeal();
         } catch (Exception e) {
-            meal = "";
+            meal = "Dinner";
         }
 
         cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
