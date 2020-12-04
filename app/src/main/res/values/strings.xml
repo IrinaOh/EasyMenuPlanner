@@ -21,4 +21,5 @@
     <string name="junkText">Junky</string>
     <string name="bullet"></string>
     <string name="ellipsis">drop down menu</string>
+    <string name="mealName">Breakfast</string>
 </resources>
