@@ -37,7 +37,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.bindData(mMenu.getRecipe(position));
+        holder.bindData(mMenu.getRecipe(position), position);
     }
 
     @Override

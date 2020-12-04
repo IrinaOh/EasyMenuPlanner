@@ -25,6 +25,7 @@ public class CookbookFragment extends Fragment {
     private RecyclerView cookbookRecycler;
     private Cookbook cookbook = new Cookbook();
     private boolean isAddRecipe = false;
+    private String meal;
     //private ExtendedFloatingActionButton
 
     public CookbookFragment() {
@@ -65,13 +66,15 @@ public class CookbookFragment extends Fragment {
 
         try {
             CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
+            meal = args.getMeal();
         } catch (Exception e) {
-
+            meal = "Dinner";
         }
+
 
         cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        cookbookRecycler.setAdapter(new CookbookAdapter(cookbook));
+        cookbookRecycler.setAdapter(new CookbookAdapter(cookbook, meal));
         return view;
     }
 
