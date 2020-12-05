@@ -13,6 +13,7 @@ import com.example.easymenuplanner.cookbook.CookbookFragmentDirections;
 import com.example.easymenuplanner.recipe.Recipe;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 
@@ -63,7 +64,8 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         lunchRecipeName.setText(menu.getRecipe(1).getRecipeName());
         dinnerRecipeName.setText(menu.getRecipe(2).getRecipeName());
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
-        String strDate = formatter.format(menu.getDate());
+        Date date = menu.getDate().getTime();
+        String strDate = formatter.format(date);
         menuDate.setText(strDate);
     }
 }

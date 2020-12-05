@@ -26,6 +26,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/menuDate"
                 android:textSize="24sp"
+                android:gravity="center_horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"

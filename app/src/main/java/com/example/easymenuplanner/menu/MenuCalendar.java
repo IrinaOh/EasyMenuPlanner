@@ -15,11 +15,12 @@ public class MenuCalendar {
         myMenus.add(new Menu(today));
 
         Calendar nextDay = Calendar.getInstance();
-        nextDay.add(Calendar.DATE, 1);
+        nextDay.add(Calendar.DAY_OF_MONTH, 1);
         myMenus.add(new Menu(nextDay));
 
-        nextDay.add(Calendar.DATE, 1);
-        myMenus.add(new Menu(nextDay));
+        Calendar twoDays = Calendar.getInstance();
+        twoDays.add(Calendar.DAY_OF_MONTH, 2);
+        myMenus.add(new Menu(twoDays));
     }
 
     public int getSize() {

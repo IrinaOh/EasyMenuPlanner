@@ -21,7 +21,6 @@ public class MenuFragment extends Fragment {
 
     //private RecyclerView menuRecycler;
     private ViewPager2 pagerView;
-
     String meal;
 
     public MenuFragment() {
@@ -40,16 +39,20 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        pagerView = view.findViewById(R.id.vpMenu);
+        pagerView = view.findViewById(R.id.vp2Menu);
         pagerView.setAdapter(new MenuAdapter(new MenuCalendar()));
+        pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
-        //pagerView.setClipToPadding(false);
-        //pagerView.setClipChildren(false);
-        //pagerView.setOffscreenPageLimit(3);
-        //pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+/*
+        pagerView = view.findViewById(R.id.pagerView);
+        pagerView.setAdapter(new CardAdapter());
 
-        //CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
-        /*
+        pagerView.setClipToPadding(false);
+        pagerView.setClipChildren(false);
+        pagerView.setOffscreenPageLimit(3);
+        pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
@@ -58,20 +61,18 @@ public class MenuFragment extends Fragment {
                 page.setScaleY(0.9f + r*0.05f);
             }
         });
+        pagerView.setPageTransformer(compositePageTransformer);
 
-         */
-        //pagerView.setPageTransformer(compositePageTransformer);
 
-        /*
-        try {
-            MenuFragmentArgs args = MenuFragmentArgs.fromBundle(getArguments());
-            meal = args.getMeal();
-        } catch (Exception e) {
+        menuRecycler = view.findViewById(R.id.rvMenu);
+        menuRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        menuRecycler.setAdapter(new MenuAdapter(new MenuCalendar()));
 
-        }
 
-         */
+ */
 
         return view;
     }
+
+
 }

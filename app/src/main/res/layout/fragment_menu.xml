@@ -7,9 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".menu.MenuFragment">
 
+
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpMenu"
+        android:id="@+id/vp2Menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="210dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
