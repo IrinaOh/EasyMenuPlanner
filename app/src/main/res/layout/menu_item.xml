@@ -51,12 +51,14 @@
                     app:layout_constraintTop_toTopOf="@+id/btDeleteBreakfast">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView3"
+                        android:id="@+id/cvBreakfastRecipe"
                         android:layout_width="260dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginTop="32dp"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -168,12 +170,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/btAddLunch" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView4"
+                        android:id="@+id/cvLunchRecipe"
                         android:layout_width="260dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginTop="32dp"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -248,11 +252,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/btAddDinner" />
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvDinnerRecipe"
                         android:layout_width="260dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginTop="32dp"
+                        app:cardBackgroundColor="@android:color/transparent"
+                        app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
