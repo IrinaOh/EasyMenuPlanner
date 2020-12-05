@@ -12,20 +12,38 @@ import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.cookbook.CookbookFragmentDirections;
 import com.example.easymenuplanner.recipe.Recipe;
 
+import java.text.SimpleDateFormat;
+
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView recipeName;
-    private Recipe recipe;
-    private boolean isAddRecipe;
-    private TextView meal;
-    private Button addRecipeButton;
+
+    private TextView menuDate;
+    private TextView breakfastRecipeName;
+    private TextView lunchRecipeName;
+    private TextView dinnerRecipeName;
+    private Button addBreakfastButton;
+    private Button deleteBreakfastButton;
+    private Button addLunchButton;
+    private Button deleteLunchButton;
+    private Button addDinnerButton;
+    private Button deleteDinnerButton;
+
 
     public MenuViewHolder(@NonNull View itemView) {
         super(itemView);
-        recipeName = itemView.findViewById(R.id.tvRecipeName);
-        meal = itemView.findViewById(R.id.tvMeal);
-        addRecipeButton = itemView.findViewById(R.id.addRecipebButton);
 
+        menuDate = itemView.findViewById(R.id.tvMenuDate);
+        breakfastRecipeName = itemView.findViewById(R.id.tvBreakfastRecipeName);
+        lunchRecipeName = itemView.findViewById(R.id.tvLunchRecipeName);
+        dinnerRecipeName = itemView.findViewById(R.id.tvDinnerRecipeName);
+        addBreakfastButton = itemView.findViewById(R.id.btAddBreakfast);
+        deleteBreakfastButton = itemView.findViewById(R.id.btDeleteBreakfast);
+        addLunchButton = itemView.findViewById(R.id.btAddLunch);
+        deleteLunchButton = itemView.findViewById(R.id.btDeleteLunch);
+        addDinnerButton = itemView.findViewById(R.id.btAddDinner);
+        deleteDinnerButton = itemView.findViewById(R.id.btDeleteDinner);
+
+        /*
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,22 +54,16 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
                 Navigation.findNavController(v).navigate(action);
             }
         });
+
+         */
     }
 
-    public void bindData(Recipe recipe, int position) {
-        this.recipe = recipe;
-        if (recipe == null) {
-            recipeName.setText("");
-        } else {
-            recipeName.setText(recipe.getRecipeName());
-        }
-        if (position == 0) {
-            meal.setText("Breakfast");
-        } else if (position == 1) {
-            meal.setText("Lunch");
-        } else {
-            meal.setText("Dinner");
-        }
-
+    public void bindData(Menu menu) {
+        breakfastRecipeName.setText(menu.getRecipe(0).getRecipeName());
+        lunchRecipeName.setText(menu.getRecipe(1).getRecipeName());
+        dinnerRecipeName.setText(menu.getRecipe(2).getRecipeName());
+        SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
+        String strDate = formatter.format(menu.getDate());
+        menuDate.setText(strDate);
     }
 }

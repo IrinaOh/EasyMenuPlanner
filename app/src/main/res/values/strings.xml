@@ -5,10 +5,6 @@
     <string name="nav_home">Home</string>
     <string name="nav_dayPlan">Today\'s Menu</string>
     <string name="nav_cookbook">Cookbook</string>
-    <string name="dayplan_breakfast">Breakfast</string>
-    <string name="dayplan_lunch">Lunch</string>
-    <string name="dayplan_dinner">Diner</string>
-    <string name="dayplan_date">20 November 2020</string>
     <string name="searchText"></string>
     <string name="recipeName_text">Recipe</string>
     <string name="numServingsLabel_text">Number of Servings:</string>
@@ -21,5 +17,10 @@
     <string name="junkText">Junky</string>
     <string name="bullet"></string>
     <string name="ellipsis">drop down menu</string>
-    <string name="mealName">Breakfast</string>
+    <string name="breakfastTitle">Breakfast</string>
+    <string name="lunchTitle">Lunch</string>
+    <string name="dinnerTitle">Dinner</string>
+    <string name="menuDate">Friday - December 4</string>
+    <string name="addRecipe">Add</string>
+    <string name="deleteRecipe">Delete</string>
 </resources>

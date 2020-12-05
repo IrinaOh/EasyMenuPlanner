@@ -2,19 +2,26 @@ package com.example.easymenuplanner.menu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.cookbook.CookbookFragmentArgs;
+import com.example.easymenuplanner.home.CardAdapter;
 
 public class MenuFragment extends Fragment {
 
-    private RecyclerView menuRecycler;
+    //private RecyclerView menuRecycler;
+    private ViewPager2 pagerView;
+
     String meal;
 
     public MenuFragment() {
@@ -33,6 +40,29 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        pagerView = view.findViewById(R.id.vpMenu);
+        pagerView.setAdapter(new MenuAdapter(new MenuCalendar()));
+
+        //pagerView.setClipToPadding(false);
+        //pagerView.setClipChildren(false);
+        //pagerView.setOffscreenPageLimit(3);
+        //pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        //CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        /*
+        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+            @Override
+            public void transformPage(@NonNull View page, float position) {
+                float r = 1 - Math.abs(position);
+                page.setScaleY(0.9f + r*0.05f);
+            }
+        });
+
+         */
+        //pagerView.setPageTransformer(compositePageTransformer);
+
+        /*
         try {
             MenuFragmentArgs args = MenuFragmentArgs.fromBundle(getArguments());
             meal = args.getMeal();
@@ -40,10 +70,7 @@ public class MenuFragment extends Fragment {
 
         }
 
-        menuRecycler = view.findViewById(R.id.menu_recyclerView);
-        menuRecycler.setHasFixedSize(true);
-        menuRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        menuRecycler.setAdapter(new MenuAdapter(new MenuViewModel()));
+         */
 
         return view;
     }

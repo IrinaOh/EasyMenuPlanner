@@ -14,34 +14,31 @@ import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
-    //private List<Recipe> recipes;
-    private MenuViewModel mMenu;
+    private MenuCalendar myMenu;
 
-    public MenuAdapter(MenuViewModel mMenu) {
-       this.mMenu = mMenu;
+    public MenuAdapter(MenuCalendar myMenu) {
+       this.myMenu = myMenu;
     }
-
 
     @Override
     public int getItemViewType(int position) {
         return R.layout.menu_item;
     }
 
-
     @NonNull
     @Override
     public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item, parent, false);
         return new MenuViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.bindData(mMenu.getRecipe(position), position);
+        holder.bindData(myMenu.getMenu(position));
     }
 
     @Override
     public int getItemCount() {
-        return mMenu.getSize();
+        return myMenu.getSize();
     }
 }
