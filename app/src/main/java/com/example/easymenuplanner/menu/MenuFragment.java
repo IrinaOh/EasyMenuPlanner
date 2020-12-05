@@ -27,7 +27,6 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +40,24 @@ public class MenuFragment extends Fragment {
 
         pagerView = view.findViewById(R.id.vp2Menu);
         pagerView.setAdapter(new MenuAdapter(new MenuCalendar()));
+
+        pagerView.setClipToPadding(false);
+        pagerView.setClipChildren(false);
+        pagerView.setOffscreenPageLimit(3);
         pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-        
+
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(10));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+            @Override
+            public void transformPage(@NonNull View page, float position) {
+                float r = 1 - Math.abs(position);
+                page.setScaleY(1.0f + r*0.05f);
+            }
+        });
+        pagerView.setPageTransformer(compositePageTransformer);
+
         return view;
     }
 
