@@ -5,6 +5,7 @@
     android:id="@+id/recipeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
     tools:context=".recipe.RecipeFragment" >
 
     <ScrollView
@@ -36,7 +37,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ingredientTitle"
-                android:textSize="20sp"/>
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ingredients_RecyclerView"
@@ -48,12 +51,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/instructionsTitle"
-                android:textSize="20sp" />
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/instructions_RecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

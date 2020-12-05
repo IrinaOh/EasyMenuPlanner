@@ -1,28 +1,26 @@
 package com.example.easymenuplanner.cookbook;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.recipe.Recipe;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
-    private List<Recipe> recipes = new ArrayList<>();
+    private Cookbook cookbook;
+    private String meal;
 
-    public CookbookAdapter() {
-        recipes.add(new Recipe("Fried Chicken", "Best Southern Fried Chicken ever.", 12));
-        recipes.add(new Recipe("Hamburgers", "Move over In-N-Out", 4));
-        recipes.add(new Recipe("Lasagna", "I feel like I'm in Italy", 6));
-        recipes.add(new Recipe("Spaghetti", "Awesome sauce.", 6));
-
+    public CookbookAdapter(Cookbook cookbook, String meal) {
+        this.cookbook = cookbook;
+        this.meal = meal;
     }
 
     @Override
@@ -39,13 +37,12 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CookbookViewHolder holder, int position) {
-        holder.getRecipeName_textView().setText(recipes.get(position).getRecipeName());
-        holder.getNumServingValue_textView().setText(String.valueOf(recipes.get(position).getNumServings()));
-        holder.getDescription_textView().setText(recipes.get(position).getDescription());
+        holder.bindData(cookbook.getRecipe(position), meal);
     }
 
     @Override
     public int getItemCount() {
-        return recipes.size();
+        return cookbook.getSize();
     }
+
 }

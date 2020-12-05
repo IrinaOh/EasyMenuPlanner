@@ -1,66 +1,87 @@
 package com.example.easymenuplanner.recipe;
 
+import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RecipeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class RecipeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    RecyclerView ingredientRecycler;
+    RecyclerView instructionRecycler;
+    Recipe r1;
+    TextView recipeName;
 
     public RecipeFragment() {
         // Required empty public constructor
+        /*
+        r1 = new Recipe("Colonel Sanders Chicken", "Best Southern Fried Chicken ever.", 12);
+        r1.addIngredient(new Ingredient("Chicken Breasts", 12.0f, null));
+        r1.addIngredient(new Ingredient("Flour", 1f, "cup"));
+        r1.addIngredient(new Ingredient("Salt", 1f, "tsp"));
+        r1.addIngredient(new Ingredient("Pepper", 1f, "tsp"));
+        r1.addIngredient(new Ingredient("Paprika", 1f, "tsp"));
+        r1.addIngredient(new Ingredient("eggs", 3f, null));
+        r1.addInstruction("Combine dry ingredients in a 1 gallon bag");
+        r1.addInstruction("Place chicken in bag one at a time and shake, coating with flour mixture.  This is going to be great.  I really hope you like this.");
+
+         */
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecipeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RecipeFragment newInstance(String param1, String param2) {
-        RecipeFragment fragment = new RecipeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe, container, false);
+        try {
+            RecipeFragmentArgs args = RecipeFragmentArgs.fromBundle(getArguments());
+            r1 = args.getRecipe();
+        } catch (Exception e) {
+
+        }
+
+
+        View view = inflater.inflate(R.layout.fragment_recipe, container, false);
+        ingredientRecycler = view.findViewById(R.id.ingredients_RecyclerView);
+        ingredientRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        ingredientRecycler.setAdapter(new IngredientAdapter(r1));
+
+        instructionRecycler = view.findViewById(R.id.instructions_RecyclerView);
+        instructionRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        instructionRecycler.setAdapter(new InstructionAdapter(r1));
+
+        recipeName = view.findViewById(R.id.recipeName_recipeView);
+        recipeName.setText(r1.getRecipeName());
+
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
     }
 }
