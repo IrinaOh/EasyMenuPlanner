@@ -21,11 +21,14 @@ import com.example.easymenuplanner.recipe.Ingredient;
 import com.example.easymenuplanner.recipe.Recipe;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
+import java.util.Calendar;
+
 public class CookbookFragment extends Fragment {
     private RecyclerView cookbookRecycler;
     private Cookbook cookbook = new Cookbook();
     private boolean isAddRecipe = false;
     private String meal;
+    private Calendar date;
     //private ExtendedFloatingActionButton
 
     public CookbookFragment() {
@@ -68,7 +71,7 @@ public class CookbookFragment extends Fragment {
             CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
             meal = args.getMeal();
         } catch (Exception e) {
-            meal = "Dinner";
+            meal = "";
         }
 
 

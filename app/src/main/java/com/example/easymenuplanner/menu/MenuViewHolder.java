@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +19,7 @@ import java.util.Objects;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-
+    private Menu menu;
     private TextView menuDate;
     private TextView breakfastRecipeName;
     private TextView lunchRecipeName;
@@ -29,7 +30,9 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
     private Button deleteLunchButton;
     private Button addDinnerButton;
     private Button deleteDinnerButton;
-
+    private CardView breakfastCV;
+    private CardView lunchCV;
+    private CardView dinnerCV;
 
     public MenuViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -44,24 +47,78 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         deleteLunchButton = itemView.findViewById(R.id.btDeleteLunch);
         addDinnerButton = itemView.findViewById(R.id.btAddDinner);
         deleteDinnerButton = itemView.findViewById(R.id.btDeleteDinner);
+        breakfastCV = itemView.findViewById(R.id.cvBreakfastRecipe);
+        lunchCV = itemView.findViewById(R.id.cvLunchRecipe);
+        dinnerCV = itemView.findViewById(R.id.cvDinnerRecipe);
 
-        /*
-        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+
+
+        breakfastCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MenuFragmentDirections.ActionNavigationMenuToNavigationCookbook action = MenuFragmentDirections.actionNavigationMenuToNavigationCookbook(meal.getText().toString());
-                // CookbookFragmentDirections.ActionNavCookbookToNavRecipe action =
-                   //     CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
+                if (breakfastRecipeName.getText().equals("")) {
 
-                Navigation.findNavController(v).navigate(action);
+                } else {
+                    MenuFragmentDirections.ActionNavigationMenuToNavigationRecipe action =
+                            MenuFragmentDirections.actionNavigationMenuToNavigationRecipe(menu.getRecipe(0));
+                    Navigation.findNavController(v).navigate(action);
+                }
+            }
+        });
+
+       lunchCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (lunchRecipeName.getText().equals("")) {
+
+                } else {
+                    MenuFragmentDirections.ActionNavigationMenuToNavigationRecipe action =
+                            MenuFragmentDirections.actionNavigationMenuToNavigationRecipe(menu.getRecipe(1));
+                    Navigation.findNavController(v).navigate(action);
+                }
+            }
+        });
+
+        dinnerCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dinnerRecipeName.getText().equals("")) {
+
+                } else {
+                    MenuFragmentDirections.ActionNavigationMenuToNavigationRecipe action =
+                            MenuFragmentDirections.actionNavigationMenuToNavigationRecipe(menu.getRecipe(2));
+                    Navigation.findNavController(v).navigate(action);
+                }
+            }
+        });
+
+
+        /*
+        recipeCard.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+
+                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
+                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
+                Navigation.findNavController(v).navigate(recipeAction);
             }
         });
 
          */
+
+
+        addBreakfastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuFragmentDirections.ActionNavigationMenuToNavigationCookbook action =
+                        MenuFragmentDirections.actionNavigationMenuToNavigationCookbook("Breakfast");
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+
     }
 
     public void bindData(Menu menu) {
-
+        this.menu = menu;
         breakfastRecipeName.setText(menu.getRecipe(0).getRecipeName());
         lunchRecipeName.setText(menu.getRecipe(1).getRecipeName());
         dinnerRecipeName.setText(menu.getRecipe(2).getRecipeName());
