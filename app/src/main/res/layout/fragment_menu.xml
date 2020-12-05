@@ -7,27 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".menu.MenuFragment">
 
+
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpMenu"
+        android:id="@+id/vp2Menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="210dp" />
 
-        <TextView
-            android:id="@+id/tvDayofWeek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/menuDate" />
-    </androidx.viewpager2.widget.ViewPager2>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menu_recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="639dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
