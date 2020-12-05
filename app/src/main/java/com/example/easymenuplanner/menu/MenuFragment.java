@@ -42,35 +42,7 @@ public class MenuFragment extends Fragment {
         pagerView = view.findViewById(R.id.vp2Menu);
         pagerView.setAdapter(new MenuAdapter(new MenuCalendar()));
         pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-
-/*
-        pagerView = view.findViewById(R.id.pagerView);
-        pagerView.setAdapter(new CardAdapter());
-
-        pagerView.setClipToPadding(false);
-        pagerView.setClipChildren(false);
-        pagerView.setOffscreenPageLimit(3);
-        pagerView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-
-        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
-        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
-            @Override
-            public void transformPage(@NonNull View page, float position) {
-                float r = 1 - Math.abs(position);
-                page.setScaleY(0.9f + r*0.05f);
-            }
-        });
-        pagerView.setPageTransformer(compositePageTransformer);
-
-
-        menuRecycler = view.findViewById(R.id.rvMenu);
-        menuRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        menuRecycler.setAdapter(new MenuAdapter(new MenuCalendar()));
-
-
- */
-
+        
         return view;
     }
 
