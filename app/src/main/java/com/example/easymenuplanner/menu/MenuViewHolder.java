@@ -122,7 +122,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 if (breakfastRecipeName.getText().equals("")) {
-                    
+
                 } else {
                     menu.deleteRecipe("breakfast");
                     breakfastRecipeName.setText("");

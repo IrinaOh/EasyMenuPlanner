@@ -45,11 +45,11 @@ public class Menu {
 
     public void deleteRecipe(String meal) {
         if (meal.equals("Breakfast")) {
-            todaysMenu.add(0, null);
+            todaysMenu.add(0, new Recipe());
         } else if (meal.equals("Lunch")) {
-            todaysMenu.add(1, null);
+            todaysMenu.add(1, new Recipe());
         } else {
-            todaysMenu.add(2, null);
+            todaysMenu.add(2, new Recipe());
         }
     }
 

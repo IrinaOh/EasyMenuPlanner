@@ -23,4 +23,5 @@
     <string name="menuDate">Friday - December 4</string>
     <string name="addRecipe">Add</string>
     <string name="deleteRecipe">Delete</string>
+    <string name="searchRecipeTitle">Search Recipes</string>
 </resources>
