@@ -10,12 +10,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
-import com.example.easymenuplanner.cookbook.CookbookFragmentDirections;
-import com.example.easymenuplanner.recipe.Recipe;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,7 +49,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         dinnerCV = itemView.findViewById(R.id.cvDinnerRecipe);
 
 
-
+        //*************View Recipes Listeners on Cards ******
         breakfastCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,20 +89,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-
-        /*
-        recipeCard.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-
-                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
-                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
-                Navigation.findNavController(v).navigate(recipeAction);
-            }
-        });
-
-         */
-
-
+        //*************Add Recipe Buttons ******
         addBreakfastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +99,60 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
+        addLunchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuFragmentDirections.ActionNavigationMenuToNavigationCookbook action =
+                        MenuFragmentDirections.actionNavigationMenuToNavigationCookbook("Lunch");
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+
+        addDinnerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuFragmentDirections.ActionNavigationMenuToNavigationCookbook action =
+                        MenuFragmentDirections.actionNavigationMenuToNavigationCookbook("Dinner");
+                Navigation.findNavController(v).navigate(action);
+            }
+        });
+
+        //*************Delete Recipe Buttons ******
+        deleteBreakfastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (breakfastRecipeName.getText().equals("")) {
+                    
+                } else {
+                    menu.deleteRecipe("breakfast");
+                    breakfastRecipeName.setText("");
+                }
+            }
+        });
+
+        deleteLunchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (lunchRecipeName.getText().equals("")) {
+
+                } else {
+                    menu.deleteRecipe("lunch");
+                    lunchRecipeName.setText("");
+                }
+            }
+        });
+
+        deleteDinnerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dinnerRecipeName.getText().equals("")) {
+
+                } else {
+                    menu.deleteRecipe("dinner");
+                    dinnerRecipeName.setText("");
+                }
+            }
+        });
     }
 
     public void bindData(Menu menu) {

@@ -15,7 +15,8 @@ public class Menu {
         todaysMenu.add( new Recipe("Lasagna", "I feel like I'm in Italy", 6));
         todaysMenu.add(new Recipe());
         todaysMenu.add( new Recipe("Spaghetti", "Awesome sauce.", 6));
-        //todaysMenu.add(new Recipe("Fried Chicken", "Best Southern Fried Chicken ever.", 12));
+        todaysMenu.add(new Recipe("Fried Chicken", "Best Southern Fried Chicken ever.", 12));
+
         this.date = date;
     }
 
