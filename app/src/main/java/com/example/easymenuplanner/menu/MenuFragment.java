@@ -16,12 +16,15 @@ import android.view.ViewGroup;
 import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.cookbook.CookbookFragmentArgs;
 import com.example.easymenuplanner.home.CardAdapter;
+import com.example.easymenuplanner.recipe.Recipe;
+import com.example.easymenuplanner.recipe.RecipeFragmentArgs;
 
 public class MenuFragment extends Fragment {
 
-    //private RecyclerView menuRecycler;
+    private Recipe newRecipe;
     private ViewPager2 pagerView;
     String meal;
+    //private MenuCalendar myMenus;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -37,6 +40,15 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
+
+        try {
+            MenuFragmentArgs args = MenuFragmentArgs.fromBundle(getArguments());
+            newRecipe = args.getRecipe();
+            meal = args.getMeal();
+        } catch (Exception e) {
+
+        }
+
 
         pagerView = view.findViewById(R.id.vp2Menu);
         pagerView.setAdapter(new MenuAdapter(new MenuCalendar()));
