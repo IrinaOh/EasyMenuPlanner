@@ -1,4 +1,4 @@
-package com.example.easymenuplanner.recipe;
+package com.example.easymenuplanner.searchRecipe;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -57,4 +57,8 @@
             android:id="@+id/action_navigation_menu_to_navigation_recipe"
             app:destination="@id/navigation_recipe" />
     </fragment>
+    <fragment
+        android:id="@+id/searchRecipeFragment2"
+        android:name="com.example.easymenuplanner.searchRecipe.SearchRecipeFragment"
+        android:label="SearchRecipeFragment" />
 </navigation>
