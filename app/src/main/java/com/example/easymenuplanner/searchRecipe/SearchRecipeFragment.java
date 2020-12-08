@@ -69,7 +69,7 @@ public class SearchRecipeFragment extends Fragment {
 
         @Override
         public void run() {
-            SearchRecipe newApiSearch = new SearchRecipe();
+            SearchRecipesApi newApiSearch = new SearchRecipesApi();
             final GetRecipes hits = newApiSearch.getRecipes(searchItem);
             /* runOnUiThread(new Runnable() {
                 @Override

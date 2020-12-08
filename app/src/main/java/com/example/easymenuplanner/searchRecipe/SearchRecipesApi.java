@@ -10,7 +10,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class SearchRecipe {
+public class SearchRecipesApi {
     //example below:
     //https://api.edamam.com/search?q=fish&app_id=661c2e42&app_key=f2af3a7c771087f4a37bfadb93a34d97
     private final String app_id = "661c2e42";
@@ -18,7 +18,7 @@ public class SearchRecipe {
     private final String baseUrl = "https://api.edamam.com/search";
     private Gson gson;
 
-    public SearchRecipe() {
+    public SearchRecipesApi() {
         gson = new Gson();
     }
 
