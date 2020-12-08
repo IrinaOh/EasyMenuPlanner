@@ -33,12 +33,12 @@ import java.util.List;
 
 public class CookbookFragment extends Fragment {
     private RecyclerView cookbookRecycler;
-    private RecyclerView dbCookbookRecycler;
+    //private RecyclerView dbCookbookRecycler;
     private Cookbook cookbook = new Cookbook();
     private boolean isAddRecipe = false;
     private String meal;
-    FloatingActionButton add_recipe;
-    private RecipeListAdapter recipeListAdapter;
+//    FloatingActionButton add_recipe;
+//    private RecipeListAdapter recipeListAdapter;
 
     public CookbookFragment() {
         // Required empty public constructor
@@ -80,13 +80,13 @@ public class CookbookFragment extends Fragment {
 
 
         //the add recipe button - floating plus sign button
-        add_recipe = view.findViewById(R.id.add_recipe_float);
-        add_recipe.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_cookbook_to_addRecipeFragment);
-            }
-        }); //end add recipe button
+//        add_recipe = view.findViewById(R.id.add_recipe_float);
+//        add_recipe.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(R.id.action_navigation_cookbook_to_addRecipeFragment);
+//            }
+//        }); //end add recipe button
 
         try {
             CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
@@ -96,21 +96,21 @@ public class CookbookFragment extends Fragment {
         }
 
 
-//        cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
-//        cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-//        cookbookRecycler.setAdapter(new CookbookAdapter(cookbook, meal));
+        cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
+        cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        cookbookRecycler.setAdapter(new CookbookAdapter(cookbook, meal));
 
         //initRecyclerView();
         //display recipes from db recycler view
-        dbCookbookRecycler = view.findViewById(R.id.db_cookbook_recyclerview);
-        dbCookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//        dbCookbookRecycler = view.findViewById(R.id.db_cookbook_recyclerview);
+//        dbCookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
 //        DividerItemDecoration decor = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
 //        dbCookbookRecycler.addItemDecoration(decor);
-        recipeListAdapter = new RecipeListAdapter(getContext());
-        dbCookbookRecycler.setAdapter(recipeListAdapter);
+//        recipeListAdapter = new RecipeListAdapter(getContext());
+//        dbCookbookRecycler.setAdapter(recipeListAdapter);
 
         //load from db all recipes
-        loadRecipeList();
+        //loadRecipeList();
 
         return view;
     }
@@ -125,10 +125,10 @@ public class CookbookFragment extends Fragment {
     }
 
     //display recipes from db
-    private void loadRecipeList() {
-        CookbookDatabase db = CookbookDatabase.getDbInstance(this.getContext());
-        List<Recipedb> recipedbList = db.recipeDao().getAllRecipes();
-        recipeListAdapter.setRecipedbList(recipedbList);
-    }
+//    private void loadRecipeList() {
+//        CookbookDatabase db = CookbookDatabase.getDbInstance(this.getContext());
+//        List<Recipedb> recipedbList = db.recipeDao().getAllRecipes();
+//        recipeListAdapter.setRecipedbList(recipedbList);
+//    }
 
 }

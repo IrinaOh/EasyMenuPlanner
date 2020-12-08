@@ -56,7 +56,7 @@ public class AddRecipeFragment extends Fragment {
                 );
             }
         });
-        return inflater.inflate(R.layout.fragment_add_recipe, container, false);
+        return view;
     }
 
     private void saveNewRecipe(String title, String desc, String ingredients, String instructions, int servings, String tag){

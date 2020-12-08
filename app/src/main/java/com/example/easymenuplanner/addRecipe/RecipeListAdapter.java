@@ -29,7 +29,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     @NonNull
     @Override
     public RecipeListAdapter.RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view  = LayoutInflater.from(context).inflate(R.layout.fragment_cookbook, parent, false);
+        View view  = LayoutInflater.from(context).inflate(R.layout.db_recipe_item, parent, false);
 
         return new RecipeViewHolder(view);
     }
@@ -38,7 +38,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     public void onBindViewHolder(@NonNull RecipeListAdapter.RecipeViewHolder holder, int position) {
         holder.tv_recipe_title.setText(this.recipedbList.get(position).title);
         holder.tv_recipe_desc.setText(this.recipedbList.get(position).description);
-        holder.tv_recipe_servings.setText(this.recipedbList.get(position).numServings);
+        holder.tv_recipe_servings.setText(String.valueOf(this.recipedbList.get(position).numServings));
 
     }
 
@@ -55,9 +55,9 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
         public RecipeViewHolder(View view) {
             super(view);
-            view.findViewById(R.id.recipe_title);
-            view.findViewById(R.id.recipe_desc);
-            view.findViewById(R.id.recipe_servings);
+            tv_recipe_title = view.findViewById(R.id.recipe_title);
+            tv_recipe_desc = view.findViewById(R.id.recipe_desc);
+            tv_recipe_servings = view.findViewById(R.id.recipe_servings);
 
         }
     }

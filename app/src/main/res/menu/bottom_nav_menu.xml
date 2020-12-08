@@ -17,5 +17,10 @@
         android:icon="@drawable/ic_baseline_menu_book"
         android:title="@string/nav_cookbook" />
 
+    <item
+        android:id="@+id/db_cookbook"
+        android:icon="@drawable/ic_baseline_menu_book"
+        android:title="DB Cookbook" />
+
 
 </menu>
