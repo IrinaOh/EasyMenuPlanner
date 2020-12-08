@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".menu.MenuFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/menu_recyclerView"
-        android:layout_width="338dp"
-        android:layout_height="639dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2Menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="210dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

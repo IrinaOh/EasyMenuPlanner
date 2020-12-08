@@ -29,6 +29,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -50,7 +51,4 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.2'
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-
-
 }

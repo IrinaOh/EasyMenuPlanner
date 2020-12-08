@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_navigation_menu_to_navigation_cookbook"
             app:destination="@id/navigation_cookbook" />
+        <action
+            android:id="@+id/action_navigation_menu_to_navigation_recipe"
+            app:destination="@id/navigation_recipe" />
     </fragment>
     <fragment
         android:id="@+id/db_cookbook"

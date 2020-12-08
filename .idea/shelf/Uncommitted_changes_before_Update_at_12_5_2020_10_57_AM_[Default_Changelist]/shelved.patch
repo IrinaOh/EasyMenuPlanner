@@ -1,0 +1,25 @@
+Index: app/src/main/java/com/example/easymenuplanner/menu/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/easymenuplanner/menu/Menu.java	(date 1607194434748)
++++ app/src/main/java/com/example/easymenuplanner/menu/Menu.java	(date 1607194434748)
+@@ -0,0 +1,17 @@
++package com.example.easymenuplanner.menu;
++
++import com.example.easymenuplanner.recipe.Recipe;
++
++import java.util.ArrayList;
++import java.util.List;
++
++public class Menu {
++
++    private List<Recipe> todaysMenu;
++    private String date;
++
++    public Menu() {
++        todaysMenu = new ArrayList<>();
++    }
++
++}
