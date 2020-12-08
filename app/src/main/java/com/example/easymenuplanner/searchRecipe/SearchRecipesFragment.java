@@ -15,12 +15,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.easymenuplanner.R;
 
-public class SearchRecipeFragment extends Fragment {
+public class SearchRecipesFragment extends Fragment {
 
     private EditText et_searchItem;
     private ListView lv_recipesHits;
 
-    public SearchRecipeFragment() {
+    public SearchRecipesFragment() {
 
     }
 
