@@ -47,28 +47,36 @@ public class SearchRecipeFragment extends Fragment {
     }
 
     public void searchItem(View view) {
-        ApiSearch item = new ApiSearch(et_searchItem.getText().toString());
+        ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
     }
 
-    private class ApiSearch extends Thread {
+    private void displayHits(GetRecipes hits) {
+        /*Adapter adapter = new ArrayAdapter<GetRecipes>(this,
+                android.R.layout.simple_list_item_1, hits.getTitle());
+        lv_recipesHits.setAdapter(adapter);
+
+         */
+
+    }
+    private class ApiSearchTask extends Thread {
 
         private String searchItem;
 
-        public ApiSearch(String searchItem) {
+        public ApiSearchTask(String searchItem) {
             this.searchItem = searchItem;
         }
 
 
         @Override
         public void run() {
-            SearchRecipe newSearch = new SearchRecipe();
-            final GetRecipes hits = newSearch.getRecipes(searchItem);
+            SearchRecipe newApiSearch = new SearchRecipe();
+            final GetRecipes hits = newApiSearch.getRecipes(searchItem);
             /* runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    displayRecipesHits(hits.getTitle());
-                    displayRecipesHits(hits.getIngredients());
-                    displayRecipesHits(hits.getUrl());
+                    displayHits(hits.getTitle());
+                    displayHits(hits.getIngredients());
+                    displayHits(hits.getUrl());
                 }
             }
 
@@ -77,7 +85,5 @@ public class SearchRecipeFragment extends Fragment {
         }
     }
 
-    private void displayRecipesHits(String title) {
 
-    }
 }
