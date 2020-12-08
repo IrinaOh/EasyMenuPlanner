@@ -1,8 +1,11 @@
 package com.example.easymenuplanner.searchRecipe;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
-public class GetRecipes {
+public class ApiRecipes {
+    @SerializedName("hits")
     private String title;
     private String url;
     //private String picture;

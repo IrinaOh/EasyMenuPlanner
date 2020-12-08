@@ -22,7 +22,7 @@ public class SearchRecipesApi {
         gson = new Gson();
     }
 
-    public GetRecipes getRecipes(String searchItem) {
+    public ApiRecipes getRecipes(String searchItem) {
         String url = baseUrl +
                 "?q=" + searchItem +
                 "&app_id" + app_id +
@@ -30,7 +30,7 @@ public class SearchRecipesApi {
         String data = loadJsonData(url);
 
         // Convert JSON data to WeatherConditions object
-        return gson.fromJson(data, GetRecipes.class);
+        return gson.fromJson(data, ApiRecipes.class);
     }
 
     private String loadJsonData(String url) {
