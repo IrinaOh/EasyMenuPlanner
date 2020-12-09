@@ -29,7 +29,7 @@ public class SearchRecipesApi {
                 "&api_key=" + api_key;
         String data = loadJsonData(url);
 
-        // Convert JSON data to WeatherConditions object
+        // Convert JSON data to ApiRecipes object
         return gson.fromJson(data, ApiRecipes.class);
     }
 

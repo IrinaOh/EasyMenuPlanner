@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -51,14 +48,15 @@ public class SearchRecipesFragment extends Fragment {
 
     public void searchItem(View view) {
         ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
+        task.start();
     }
 
     private void displayHits(ApiRecipes hits) {
         /*
-        Adapter adapter = new ArrayAdapter<ApiRecipes>(this, android.R.layout.lvRecipesHits, hits.getTitle());
+        Adapter adapter = new ArrayAdapter<ApiRecipes>(this, android.R.layout.lv_recipesHits, hits.getTitle());
         lv_recipesHits.setAdapter((ListAdapter) adapter);
 
-        */
+      */
 
     }
     private class ApiSearchTask extends Thread {
@@ -74,7 +72,7 @@ public class SearchRecipesFragment extends Fragment {
         public void run() {
             SearchRecipesApi newApiSearch = new SearchRecipesApi();
             final ApiRecipes hits = newApiSearch.getRecipes(searchItem);
-            /* runOnUiThread(new Runnable() {
+        /*    runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     displayHits(hits.getTitle());
@@ -82,8 +80,8 @@ public class SearchRecipesFragment extends Fragment {
                     displayHits(hits.getUrl());
                 }
             }
+        */
 
-             */
 
         }
     }
