@@ -32,7 +32,7 @@ public class SearchRecipesApi {
                 "&api_key=" + api_key;
         String data = loadJsonData(url);
 
-        // Convert JSON data to WeatherConditions object
+        // Convert JSON data to ApiRecipe object
         Type collectionType = new TypeToken<Collection<ApiRecipe>>(){}.getType();
         Collection<ApiRecipe> hits = gson.fromJson(data, collectionType);
         //return gson.fromJson(data, ApiRecipes.class);
