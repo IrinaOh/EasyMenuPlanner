@@ -18,7 +18,7 @@ public class SearchRecipesApi {
     //https://api.edamam.com/search?q=fish&app_id=661c2e42&app_key=f2af3a7c771087f4a37bfadb93a34d97
     private final String app_id = "661c2e42";
     private final String api_key = "f2af3a7c771087f4a37bfadb93a34d97";
-    private final String baseUrl = "https://api.edamam.com/search";
+    private final String baseUrl = "https://www.edamam.com/search";
     private Gson gson;
 
     public SearchRecipesApi() {

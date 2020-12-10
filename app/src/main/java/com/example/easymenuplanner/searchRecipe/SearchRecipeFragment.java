@@ -4,19 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import com.example.easymenuplanner.R;
-import com.example.easymenuplanner.menu.MenuFragmentDirections;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -47,6 +42,15 @@ public class SearchRecipeFragment extends Fragment {
         et_searchItem = view.findViewById(R.id.etSearchItem);
         lv_recipesHits = view.findViewById(R.id.lvRecipesHits);
         bt_searchButton = view.findViewById(R.id.btSearchButton);
+
+        bt_searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
+                task.start();
+            }
+        });
+
         return view;
     }
 
@@ -58,13 +62,6 @@ public class SearchRecipeFragment extends Fragment {
 
 
     public void searchItem(View view) {
-        bt_searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
-                task.start();
-            }
-        });
 
     }
 
