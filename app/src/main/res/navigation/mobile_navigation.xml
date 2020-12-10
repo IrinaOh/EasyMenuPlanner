@@ -24,6 +24,9 @@
         <argument
             android:name="meal"
             app:argType="string" />
+        <action
+            android:id="@+id/action_nav_cookbook_to_addRecipeFragment"
+            app:destination="@id/addRecipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_recipe"

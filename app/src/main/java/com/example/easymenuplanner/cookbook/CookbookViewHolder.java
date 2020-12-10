@@ -18,6 +18,7 @@ import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.menu.MenuFragmentDirections;
 import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.Recipedb;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class CookbookViewHolder extends RecyclerView.ViewHolder {
@@ -28,7 +29,6 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
     ImageView menu_imageView;
     Recipedb recipe;
     CardView recipeCard;
-    String meal;
 
 
     boolean addToMenu = false;
@@ -40,6 +40,7 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
         numServingValue_textView = itemView.findViewById(R.id.numServingsValue_textView);
         menu_imageView = itemView.findViewById(R.id.ellipsis_menu);
         recipeCard = itemView.findViewById(R.id.cardView2);
+
 
         recipeCard.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {

@@ -18,8 +18,10 @@ import androidx.navigation.Navigation;
 import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.menu.MenuFragmentDirections;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class SearchRecipeFragment extends Fragment {
 
@@ -47,6 +49,13 @@ public class SearchRecipeFragment extends Fragment {
         et_searchItem = view.findViewById(R.id.etSearchItem);
         lv_recipesHits = view.findViewById(R.id.lvRecipesHits);
         bt_searchButton = view.findViewById(R.id.btSearchButton);
+        bt_searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
+                task.start();
+            }
+        });
         return view;
     }
 
@@ -57,28 +66,27 @@ public class SearchRecipeFragment extends Fragment {
     }
 
 
-    public void searchItem(View view) {
-        bt_searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
-                task.start();
-            }
-        });
+//    public void searchItem(View view) {
+//        bt_searchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
+//                task.start();
+//            }
+//        });
+//
+//    }
 
-    }
+    private void displayHits(ApiRecipeGroup hits) {
+        List<ApiRecipe> allRecipes = new ArrayList<>();
+        allRecipes = hits.getAllRecipes();
 
-    private void displayHits(Collection<ApiRecipe> hits) {
-        Iterator<ApiRecipe> iterator = hits.iterator();
-
-        // while loop
-        while (iterator.hasNext()) {
-            ApiRecipe hit = iterator.next();
-            System.out.println("title= " + hit.getTitle());
-            System.out.println("url= " + hit.getUrl());
-            System.out.println("ingredients= " + hit.getIngredients());
-
+        for (ApiRecipe recipe:allRecipes) {
+            System.out.println("title= " + recipe.getTitle());
+            System.out.println("url= " + recipe.getUrl());
+            System.out.println("ingredients= " + recipe.getIngredients());
         }
+
 
         /*
         Adapter adapter = new ArrayAdapter<ApiRecipe>(this, android.R.layout.simple_list_item_1, hits.iterator());
@@ -99,12 +107,10 @@ public class SearchRecipeFragment extends Fragment {
         @Override
         public void run() {
             SearchRecipesApi newApiSearch = new SearchRecipesApi();
-            final Collection<ApiRecipe> hits = newApiSearch.getRecipes(searchItem);
+            final ApiRecipeGroup hits = newApiSearch.getRecipes(searchItem);
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    displayHits(hits);
-                    displayHits(hits);
                     displayHits(hits);
                 }
             });

@@ -24,6 +24,7 @@ import com.example.easymenuplanner.recipe.Ingredient;
 import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.Recipedb;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +34,7 @@ public class CookbookFragment extends Fragment {
     private RecyclerView cookbookRecycler;
     private CookbookViewModel cookbookViewModel;
     private CookbookAdapter cookbookAdapter;
-
+    private FloatingActionButton addRecipe_fab;
     //private ExtendedFloatingActionButton
 
     public CookbookFragment() {
@@ -85,6 +86,12 @@ public class CookbookFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        addRecipe_fab = view.findViewById(R.id.fabAddRecipe);
+//        addRecipe_fab.setOnClickListener( v -> {
+//
+//        });
+
         cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
         cookbookViewModel = new ViewModelProvider(getActivity(), new CookbookViewModelFactory(getActivity().getApplication())).get(CookbookViewModel.class);
         cookbookViewModel.init();
@@ -100,6 +107,7 @@ public class CookbookFragment extends Fragment {
         cookbookRecycler.setAdapter(cookbookAdapter);
 
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

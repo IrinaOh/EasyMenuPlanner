@@ -1,15 +1,13 @@
 package com.example.easymenuplanner.searchRecipe;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -18,14 +16,14 @@ public class SearchRecipesApi {
     //https://api.edamam.com/search?q=fish&app_id=661c2e42&app_key=f2af3a7c771087f4a37bfadb93a34d97
     private final String app_id = "661c2e42";
     private final String api_key = "f2af3a7c771087f4a37bfadb93a34d97";
-    private final String baseUrl = "https://api.edamam.com/search";
+    private final String baseUrl = "https://www.edamam.com/search";
     private Gson gson;
 
     public SearchRecipesApi() {
         gson = new Gson();
     }
 
-    public Collection<ApiRecipe> getRecipes(String searchItem) {
+    public ApiRecipeGroup getRecipes(String searchItem) {
         String url = baseUrl +
                 "?q=" + searchItem +
                 "&app_id" + app_id +
@@ -33,8 +31,8 @@ public class SearchRecipesApi {
         String data = loadJsonData(url);
 
         // Convert JSON data to ApiRecipe object
-        Type collectionType = new TypeToken<Collection<ApiRecipe>>(){}.getType();
-        Collection<ApiRecipe> hits = gson.fromJson(data, collectionType);
+        //Type collectionType = new TypeToken<Collection<ApiRecipe>>(){}.getType();
+        ApiRecipeGroup hits = gson.fromJson(data, ApiRecipeGroup.class);
         //return gson.fromJson(data, ApiRecipes.class);
         return hits;
     }
