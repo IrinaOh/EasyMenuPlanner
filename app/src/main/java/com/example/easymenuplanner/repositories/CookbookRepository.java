@@ -36,11 +36,11 @@ public class CookbookRepository {
         return cookbook;
     }
 
-    void insertRecipe(Recipedb recipe) {
+    public void insertRecipe(Recipedb recipe) {
         cookbookDao.insertRecipe(recipe);
     }
 
-    void deleteRecipe(Recipedb recipe) {
+    public void deleteRecipe(Recipedb recipe) {
         cookbookDao.delete(recipe);
     }
 

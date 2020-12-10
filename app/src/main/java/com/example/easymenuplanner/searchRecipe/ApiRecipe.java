@@ -9,16 +9,19 @@ public class ApiRecipe {
     private String label;
     private String url;
     //private String picture;
-    private ApiAllIngredients ingredients;
+    private List<ApiIngredient> ingredients;
+    private Float calories;
 
-    public ApiRecipe(String label, String url, ApiAllIngredients ingredients) {
+    public ApiRecipe(String label, String url, List<ApiIngredient> ingredients, Float calories) {
         this.label = label;
         this.url = url;
         this.ingredients = ingredients;
+        this.calories = calories;
+
     }
 
     public String getTitle() { return label; }
     public String getUrl() { return url; }
     //public String getPicture() { return picture; }
-    public ApiAllIngredients getIngredients() { return ingredients; }
+    public List<ApiIngredient> getIngredients() { return ingredients; }
 }

@@ -78,6 +78,8 @@ public class SearchRecipeFragment extends Fragment {
 //    }
 
     private void displayHits(ApiRecipeGroup hits) {
+
+
         List<ApiRecipe> allRecipes = new ArrayList<>();
         allRecipes = hits.getAllRecipes();
 

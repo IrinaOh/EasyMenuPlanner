@@ -88,19 +88,18 @@ public class CookbookFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         addRecipe_fab = view.findViewById(R.id.fabAddRecipe);
-//        addRecipe_fab.setOnClickListener( v -> {
-//
-//        });
+        addRecipe_fab.setOnClickListener( v -> {
+            Navigation.findNavController(v).navigate(R.id.action_nav_cookbook_to_addRecipeFragment);
+        });
 
         cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
         cookbookViewModel = new ViewModelProvider(getActivity(), new CookbookViewModelFactory(getActivity().getApplication())).get(CookbookViewModel.class);
         cookbookViewModel.init();
-//        cookbookViewModel.getCookbook().observe(getActivity(), new Observer<List<Recipedb>>() {
-//            @Override
-//            public void onChanged(List<Recipedb> recipedbs) {
-//                //cookbookAdapter.notifyDataSetChanged();
-//            }
+
+//        cookbookViewModel.getCookbook().observe(getActivity(), recipedbs -> {
+//            cookbookAdapter.notifyDataSetChanged();
 //        });
+
 
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
         cookbookAdapter = new CookbookAdapter(new ArrayList<Recipedb>());
