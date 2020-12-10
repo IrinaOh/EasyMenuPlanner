@@ -9,18 +9,18 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.recipe.Recipe;
+import com.example.easymenuplanner.recipe.Recipedb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
-    private Cookbook cookbook;
-    private String meal;
+    private ArrayList<Recipedb> cookbook;
 
-    public CookbookAdapter(Cookbook cookbook, String meal) {
+    public CookbookAdapter(ArrayList<Recipedb> cookbook) {
         this.cookbook = cookbook;
-        this.meal = meal;
     }
 
     @Override
@@ -37,12 +37,12 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CookbookViewHolder holder, int position) {
-        holder.bindData(cookbook.getRecipe(position), meal);
+        holder.bindData(cookbook.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return cookbook.getSize();
+        return cookbook.size();
     }
 
 }
