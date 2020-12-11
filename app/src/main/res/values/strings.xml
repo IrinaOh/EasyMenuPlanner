@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">EasyMenuPlanner</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_dayPlan">Today\'s Menu</string>
+    <string name="nav_cookbook">Cookbook</string>
+    <string name="searchText"></string>
+    <string name="recipeName_text">Recipe</string>
+    <string name="numServingsLabel_text">Number of Servings:</string>
+    <string name="numberServingValue_text">4</string>
+    <string name="recipeDescription">This is a great dish</string>
+    <string name="ingredientTitle">Ingredients</string>
+    <string name="instructionsTitle">Cooking Instructions</string>
+    <string name="instructionNumber">1.</string>
+    <string name="quantity">\frac{1}{2}</string>
+    <string name="junkText">Junky</string>
+    <string name="bullet"></string>
+    <string name="ellipsis">drop down menu</string>
+    <string name="breakfastTitle">Breakfast</string>
+    <string name="lunchTitle">Lunch</string>
+    <string name="dinnerTitle">Dinner</string>
+    <string name="menuDate">Friday - December 4</string>
+    <string name="addRecipe">Add</string>
+    <string name="deleteRecipe">Delete</string>
+    <string name="searchRecipeTitle">Search Recipes</string>
 </resources>

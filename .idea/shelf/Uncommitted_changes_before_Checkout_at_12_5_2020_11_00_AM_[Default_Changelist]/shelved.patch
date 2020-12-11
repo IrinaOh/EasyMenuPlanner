@@ -1,0 +1,63 @@
+Index: app/src/main/java/com/example/easymenuplanner/menu/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.easymenuplanner.menu;\r\n\r\nimport com.example.easymenuplanner.recipe.Recipe;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Calendar;\r\nimport java.util.Date;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\n\r\npublic class Menu {\r\n    private List<Recipe> todaysMenu;\r\n    private Calendar date;\r\n\r\n    public Menu(Calendar date){\r\n        todaysMenu = new ArrayList<>();\r\n        todaysMenu.add(new Recipe(\"Lasagna\", \"I feel like I'm in Italy\", 6));\r\n        todaysMenu.add(new Recipe(\"Spaghetti\", \"Awesome sauce.\", 6));\r\n        todaysMenu.add(new Recipe(\"Fried Chicken\", \"Best Southern Fried Chicken ever.\", 12));\r\n        this.date = date;\r\n    }\r\n\r\n    public Recipe getRecipe(int position) {\r\n        return todaysMenu.get(position);\r\n    }\r\n\r\n    public Calendar getDate() {\r\n        return date;\r\n    }\r\n\r\n    public void addRecipe(Recipe recipe, String meal) {\r\n\r\n        if (meal.equals(\"Breakfast\")) {\r\n            todaysMenu.add(0, recipe);\r\n        } else if (meal.equals(\"Lunch\")) {\r\n            todaysMenu.add(1, recipe);\r\n        } else {\r\n            todaysMenu.add(2, recipe);\r\n        }\r\n    }\r\n\r\n    public void deleteRecipe(String meal) {\r\n        if (meal.equals(\"Breakfast\")) {\r\n            todaysMenu.add(0, null);\r\n        } else if (meal.equals(\"Lunch\")) {\r\n            todaysMenu.add(1, null);\r\n        } else {\r\n            todaysMenu.add(2, null);\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/easymenuplanner/menu/Menu.java	(revision 6ccb10217f84b567e3f2532999235ce8e12cc3f3)
++++ app/src/main/java/com/example/easymenuplanner/menu/Menu.java	(date 1607194660779)
+@@ -3,50 +3,15 @@
+ import com.example.easymenuplanner.recipe.Recipe;
+ 
+ import java.util.ArrayList;
+-import java.util.Calendar;
+-import java.util.Date;
+-import java.util.HashMap;
+ import java.util.List;
+ 
+ public class Menu {
++
+     private List<Recipe> todaysMenu;
+-    private Calendar date;
++    private String date;
+ 
+-    public Menu(Calendar date){
++    public Menu() {
+         todaysMenu = new ArrayList<>();
+-        todaysMenu.add(new Recipe("Lasagna", "I feel like I'm in Italy", 6));
+-        todaysMenu.add(new Recipe("Spaghetti", "Awesome sauce.", 6));
+-        todaysMenu.add(new Recipe("Fried Chicken", "Best Southern Fried Chicken ever.", 12));
+-        this.date = date;
+-    }
+-
+-    public Recipe getRecipe(int position) {
+-        return todaysMenu.get(position);
+-    }
+-
+-    public Calendar getDate() {
+-        return date;
+-    }
+-
+-    public void addRecipe(Recipe recipe, String meal) {
+-
+-        if (meal.equals("Breakfast")) {
+-            todaysMenu.add(0, recipe);
+-        } else if (meal.equals("Lunch")) {
+-            todaysMenu.add(1, recipe);
+-        } else {
+-            todaysMenu.add(2, recipe);
+-        }
+-    }
+-
+-    public void deleteRecipe(String meal) {
+-        if (meal.equals("Breakfast")) {
+-            todaysMenu.add(0, null);
+-        } else if (meal.equals("Lunch")) {
+-            todaysMenu.add(1, null);
+-        } else {
+-            todaysMenu.add(2, null);
+-        }
+     }
+ 
+ }
