@@ -73,19 +73,17 @@ public class CookbookFragment extends Fragment {
         cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
         cookbookViewModel = new ViewModelProvider(getActivity(), new CookbookViewModelFactory(getActivity().getApplication())).get(CookbookViewModel.class);
         cookbookViewModel.init();
-//        cookbookViewModel.getCookbook().observe(getActivity(), new Observer<List<Recipedb>>() {
-//            @Override
-//            public void onChanged(List<Recipedb> recipedbs) {
-//                cookbookAdapter.notifyDataSetChanged();
-//            }
-//        });
 
-
+        cookbookViewModel.getCookbook().observe(getViewLifecycleOwner(), new Observer<List<Recipedb>>() {
+            @Override
+            public void onChanged(List<Recipedb> recipedbs) {
+                cookbookAdapter.notifyDataSetChanged();
+            }
+        });
 
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook());
+        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook().getValue());
         cookbookRecycler.setAdapter(cookbookAdapter);
-
     }
 
 

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "cookbook_table")
+@Entity(tableName = "recipe_table")
 public class Recipedb {
     @PrimaryKey(autoGenerate = true)
     public int id;
