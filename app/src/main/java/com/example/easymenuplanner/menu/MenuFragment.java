@@ -3,7 +3,10 @@ package com.example.easymenuplanner.menu;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
@@ -14,16 +17,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.easymenuplanner.R;
+import com.example.easymenuplanner.cookbook.CookbookAdapter;
 import com.example.easymenuplanner.cookbook.CookbookFragmentArgs;
+import com.example.easymenuplanner.cookbook.CookbookViewModel;
+import com.example.easymenuplanner.cookbook.CookbookViewModelFactory;
 import com.example.easymenuplanner.home.CardAdapter;
 import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.RecipeFragmentArgs;
+import com.example.easymenuplanner.recipe.Recipedb;
+
+import java.util.List;
 
 public class MenuFragment extends Fragment {
 
-    private Recipe newRecipe;
+    private MenuViewModel menuViewModel;
     private ViewPager2 pagerView;
-    String meal;
+    private MenuAdapter menuAdapter;
+
     //private MenuCalendar myMenus;
 
     public MenuFragment() {
@@ -41,17 +51,33 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        try {
-            MenuFragmentArgs args = MenuFragmentArgs.fromBundle(getArguments());
-            newRecipe = args.getRecipe();
-            meal = args.getMeal();
-        } catch (Exception e) {
+//        try {
+////            MenuFragmentArgs args = MenuFragmentArgs.fromBundle(getArguments());
+////            newRecipe = args.getRecipe();
+////            meal = args.getMeal();
+//        } catch (Exception e) {
+//
+//        }
 
-        }
+        return view;
+    }
 
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         pagerView = view.findViewById(R.id.vp2Menu);
-        pagerView.setAdapter(new MenuAdapter(new MenuCalendar()));
+        menuViewModel = new ViewModelProvider(getActivity(), new MenuViewModelFactory(getActivity().getApplication())).get(MenuViewModel.class);
+        menuViewModel.init();
+        menuViewModel.getMenus().observe(getViewLifecycleOwner(), new Observer<List<Menudb>>() {
+            @Override
+            public void onChanged(List<Menudb> menudbsdbs) {
+                menuAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+        menuAdapter = new MenuAdapter(menuViewModel.getMenus().getValue());
+        pagerView.setAdapter(menuAdapter);
 
         pagerView.setClipToPadding(false);
         pagerView.setClipChildren(false);
@@ -70,8 +96,6 @@ public class MenuFragment extends Fragment {
         });
         pagerView.setPageTransformer(compositePageTransformer);
 
-        return view;
+
     }
-
-
 }

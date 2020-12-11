@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
 
+import java.util.List;
+
 public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
-    private MenuCalendar myMenu;
+    private List<Menudb> menus;
 
-    public MenuAdapter(MenuCalendar myMenu) {
-       this.myMenu = myMenu;
+    public MenuAdapter(List<Menudb> menus) {
+       this.menus = menus;
     }
 
     @Override
@@ -31,11 +33,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.bindData(myMenu.getMenu(position));
+        holder.bindData(menus.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return myMenu.getSize();
+        return menus.size();
     }
 }

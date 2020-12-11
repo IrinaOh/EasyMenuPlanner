@@ -2,8 +2,10 @@ package com.example.easymenuplanner.repositories;
 
 import android.app.Application;
 
+import com.example.easymenuplanner.database.MenuDao;
 import com.example.easymenuplanner.database.RecipeDao;
 import com.example.easymenuplanner.database.CookbookDatabase;
+import com.example.easymenuplanner.menu.Menudb;
 import com.example.easymenuplanner.recipe.Recipedb;
 
 import java.util.List;
@@ -12,6 +14,8 @@ public class CookbookRepository {
     private static CookbookRepository instance;
     private RecipeDao recipeDao;
     private List<Recipedb> cookbook;
+    private MenuDao menuDao;
+    private List<Menudb> menus;
     private Application application;
 
     private CookbookRepository(Application application) {
@@ -31,6 +35,17 @@ public class CookbookRepository {
         cookbook = recipeDao.getAllRecipes();
         return cookbook;
     }
+
+    public List<Menudb> getMenus() {
+        CookbookDatabase db = CookbookDatabase.getDbInstance(application);
+        menuDao = db.menuDao();
+        menus = menuDao.getAllMenus();
+        return menus;
+    }
+
+//    public Menudb findRecipeByID(int id) {
+//
+//    }
 
     public void insertRecipe(Recipedb recipe) {
         recipeDao.insertRecipe(recipe);
