@@ -15,6 +15,7 @@ import java.util.List;
 public class CookbookViewModel extends AndroidViewModel {
 
     private CookbookRepository cookbookRepository;
+    private MutableLiveData<List<Recipedb>> liveCookbook;
     private List<Recipedb> cookbook;
     Application application;
 
@@ -29,10 +30,18 @@ public class CookbookViewModel extends AndroidViewModel {
         }
         cookbookRepository =  cookbookRepository.getInstance(application);
         cookbook = cookbookRepository.getCookbook();
+        liveCookbook = new MutableLiveData<>();
+        liveCookbook.setValue(cookbook);
     }
 
-    public List<Recipedb> getCookbook() {
-        return cookbook;
+    public MutableLiveData<List<Recipedb>> getCookbook() {
+        readFromDatabase();
+        return liveCookbook;
+    }
+
+    private void readFromDatabase() {
+        cookbook = cookbookRepository.getCookbook();
+        liveCookbook.setValue(cookbook);
     }
 
 }
