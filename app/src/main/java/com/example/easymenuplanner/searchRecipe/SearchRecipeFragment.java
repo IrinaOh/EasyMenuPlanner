@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -28,6 +29,8 @@ public class SearchRecipeFragment extends Fragment {
     private EditText et_searchItem;
     private ListView lv_recipesHits;
     private Button bt_searchButton;
+    //private SearchRecipeViewModel searchViewModel;
+    private List<ApiRecipeTop> allRecipes;
 
     public SearchRecipeFragment() {
 
@@ -60,43 +63,35 @@ public class SearchRecipeFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //searchViewModel = new SearchRecipeViewModel(getActivity());
+
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
     }
 
 
-//    public void searchItem(View view) {
-//        bt_searchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
-//                task.start();
-//            }
-//        });
-//
-//    }
-
-    private void displayHits(ApiRecipeGroup hits) {
-
-
-        List<ApiRecipe> allRecipes = new ArrayList<>();
-        allRecipes = hits.getAllRecipes();
-
-        for (ApiRecipe recipe:allRecipes) {
-            System.out.println("title= " + recipe.getTitle());
-            System.out.println("url= " + recipe.getUrl());
-            System.out.println("ingredients= " + recipe.getIngredients());
-        }
-
-
-        /*
-        Adapter adapter = new ArrayAdapter<ApiRecipe>(this, android.R.layout.simple_list_item_1, hits.iterator());
-        lv_recipesHits.setAdapter((ListAdapter) adapter);
-        */
-
+    public void searchItem(View view) {
+        bt_searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
+                task.start();
+            }
+        });
 
     }
+
+    private void displayHits(ApiRecipeGroup hits) {
+        allRecipes = hits.getAllRecipes();
+
+    }
+    
     private class ApiSearchTask extends Thread {
 
         private String searchItem;
