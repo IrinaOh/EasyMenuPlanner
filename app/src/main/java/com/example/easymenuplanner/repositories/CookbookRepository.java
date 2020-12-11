@@ -15,7 +15,7 @@ import java.util.List;
 public class CookbookRepository {
     private static CookbookRepository instance;
     private CookbookDao cookbookDao;
-    private LiveData<List<Recipedb>> cookbook;
+    private List<Recipedb> cookbook;
     private Application application;
 
     private CookbookRepository(Application application) {
@@ -29,7 +29,7 @@ public class CookbookRepository {
         return instance;
     }
 
-    public LiveData<List<Recipedb>> getCookbook() {
+    public List<Recipedb> getCookbook() {
         CookbookDatabase db = CookbookDatabase.getDbInstance(application);
         cookbookDao = db.cookbookDao();
         cookbook = cookbookDao.getAllRecipes();

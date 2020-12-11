@@ -17,9 +17,9 @@ import java.util.List;
 
 public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
-    private ArrayList<Recipedb> cookbook;
+    private List<Recipedb> cookbook;
 
-    public CookbookAdapter(ArrayList<Recipedb> cookbook) {
+    public CookbookAdapter(List<Recipedb> cookbook) {
         this.cookbook = cookbook;
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AddRecipeViewModel extends AndroidViewModel {
     private CookbookRepository cookbookRepository;
-    private LiveData<List<Recipedb>> cookbook;
+    private List<Recipedb> cookbook;
     Application application;
     private Recipedb recipe;
     private String recipeTitle, recipeDescription, recipeIngredients, recipeInstructions, recipeTag;
@@ -33,7 +33,7 @@ public class AddRecipeViewModel extends AndroidViewModel {
         cookbook = cookbookRepository.getCookbook();
     }
 
-    public LiveData<List<Recipedb>> getCookbook() {
+    public List<Recipedb> getCookbook() {
         return cookbook;
     }
 

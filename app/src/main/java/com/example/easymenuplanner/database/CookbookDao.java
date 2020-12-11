@@ -16,7 +16,7 @@ import java.util.List;
 public interface CookbookDao {
 
     @Query("SELECT * FROM cookbook_table")
-    LiveData<List<Recipedb>> getAllRecipes();
+    List<Recipedb> getAllRecipes();
 
     // Three dots means that zero or more Recipedb objects may be passed as the arguments for this
     // method.
@@ -25,4 +25,7 @@ public interface CookbookDao {
 
     @Delete
     void delete(Recipedb recipedb);
+
+    @Query("DELETE FROM cookbook_table")
+    void deleteAll();
 }

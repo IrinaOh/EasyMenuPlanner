@@ -35,31 +35,9 @@ public class CookbookFragment extends Fragment {
     private CookbookViewModel cookbookViewModel;
     private CookbookAdapter cookbookAdapter;
     private FloatingActionButton addRecipe_fab;
-    //private ExtendedFloatingActionButton
 
     public CookbookFragment() {
-//        // Required empty public constructor
-//        Recipe r1 = new Recipe("Fried Chicken", "Best Southern Fried Chicken ever.", 12);
-//        r1.addIngredient(new Ingredient("Chicken", 12.0f, null));
-//        r1.addIngredient(new Ingredient("Flour", 1f, "cup"));
-//        r1.addIngredient(new Ingredient("Salt", 1f, "tsp"));
-//        r1.addIngredient(new Ingredient("Pepper", 1f, "tsp"));
-//        r1.addIngredient(new Ingredient("Paprika", 1f, "tsp"));
-//        r1.addIngredient(new Ingredient("eggs", 3f, null));
-//        r1.addInstruction("Combine dry ingredients in a 1 gallon bag");
-//        r1.addInstruction("Place chicken in bag one at a time and shake, coating with flour mixture.  This is going to be great.  I really hope you like this.");
-//        cookbook.addRecipe(r1);
-//        Recipe r2 = new Recipe("Hamburgers", "Move over In-N-Out", 4);
-//        r2.addIngredient(new Ingredient("Ground Beef", 1, "lb"));
-//        r2.addIngredient(new Ingredient("A1 Steak Sauce", 1, "Tbsp"));
-//        r2.addIngredient(new Ingredient("Ketchup", 3, "Tbsp"));
-//        r2.addIngredient(new Ingredient("Hamburger Buns", 1, "Package"));
-//        r2.addInstruction("Mix ground beef and A1 sauce");
-//        r2.addInstruction("Create four patties");
-//        r2.addInstruction("Cook on grill");
-//        cookbook.addRecipe(r2);
-//        cookbook.addRecipe(new Recipe("Lasagna", "I feel like I'm in Italy", 6));
-//        cookbook.addRecipe(new Recipe("Spaghetti", "Awesome sauce.", 6));
+
     }
 
     @Override
@@ -95,14 +73,17 @@ public class CookbookFragment extends Fragment {
         cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
         cookbookViewModel = new ViewModelProvider(getActivity(), new CookbookViewModelFactory(getActivity().getApplication())).get(CookbookViewModel.class);
         cookbookViewModel.init();
-
-//        cookbookViewModel.getCookbook().observe(getActivity(), recipedbs -> {
-//            cookbookAdapter.notifyDataSetChanged();
+//        cookbookViewModel.getCookbook().observe(getActivity(), new Observer<List<Recipedb>>() {
+//            @Override
+//            public void onChanged(List<Recipedb> recipedbs) {
+//                cookbookAdapter.notifyDataSetChanged();
+//            }
 //        });
 
 
+
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        cookbookAdapter = new CookbookAdapter(new ArrayList<Recipedb>());
+        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook());
         cookbookRecycler.setAdapter(cookbookAdapter);
 
     }

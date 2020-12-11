@@ -15,7 +15,7 @@ import java.util.List;
 public class CookbookViewModel extends AndroidViewModel {
 
     private CookbookRepository cookbookRepository;
-    private LiveData<List<Recipedb>> cookbook;
+    private List<Recipedb> cookbook;
     Application application;
 
     public CookbookViewModel(Application application) {
@@ -31,7 +31,7 @@ public class CookbookViewModel extends AndroidViewModel {
         cookbook = cookbookRepository.getCookbook();
     }
 
-    public LiveData<List<Recipedb>> getCookbook() {
+    public List<Recipedb> getCookbook() {
         return cookbook;
     }
 
