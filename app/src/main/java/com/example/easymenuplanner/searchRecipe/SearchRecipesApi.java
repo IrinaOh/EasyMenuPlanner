@@ -1,15 +1,12 @@
 package com.example.easymenuplanner.searchRecipe;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -25,7 +22,7 @@ public class SearchRecipesApi {
         gson = new Gson();
     }
 
-    public Collection<ApiRecipe> getRecipes(String searchItem) {
+    public ApiRecipeGroup getRecipes(String searchItem) {
         String url = baseUrl +
                 "?q=" + searchItem +
                 "&app_id" + app_id +
@@ -33,8 +30,8 @@ public class SearchRecipesApi {
         String data = loadJsonData(url);
 
         // Convert JSON data to ApiRecipe object
-        Type collectionType = new TypeToken<Collection<ApiRecipe>>(){}.getType();
-        Collection<ApiRecipe> hits = gson.fromJson(data, collectionType);
+        //Type collectionType = new TypeToken<Collection<ApiRecipe>>(){}.getType();
+        ApiRecipeGroup hits = gson.fromJson(data, ApiRecipeGroup.class);
         //return gson.fromJson(data, ApiRecipes.class);
         return hits;
     }

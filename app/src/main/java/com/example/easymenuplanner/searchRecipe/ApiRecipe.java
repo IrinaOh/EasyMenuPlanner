@@ -5,16 +5,23 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ApiRecipe {
-    @SerializedName("recipe")
+    //@SerializedName("recipe")
     private String label;
     private String url;
-    //private String image;
-    private float yield;
-    private List<String> ingredients;
+    //private String picture;
+    private List<ApiIngredient> ingredients;
+    private Float calories;
+
+    public ApiRecipe(String label, String url, List<ApiIngredient> ingredients, Float calories) {
+        this.label = label;
+        this.url = url;
+        this.ingredients = ingredients;
+        this.calories = calories;
+
+    }
 
     public String getTitle() { return label; }
     public String getUrl() { return url; }
     //public String getPicture() { return picture; }
-    public Float getYield() { return yield;}
-    public List<String> getIngredients() { return ingredients; }
+    public List<ApiIngredient> getIngredients() { return ingredients; }
 }

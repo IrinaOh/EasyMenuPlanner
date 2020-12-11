@@ -4,8 +4,11 @@ import android.content.ComponentName;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,41 +22,22 @@ import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.home.HomeFragment;
 import com.example.easymenuplanner.recipe.Ingredient;
 import com.example.easymenuplanner.recipe.Recipe;
+import com.example.easymenuplanner.recipe.Recipedb;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class CookbookFragment extends Fragment {
     private RecyclerView cookbookRecycler;
-    private Cookbook cookbook = new Cookbook();
-    private boolean isAddRecipe = false;
-    private String meal;
-    private Calendar date;
-    //private ExtendedFloatingActionButton
+    private CookbookViewModel cookbookViewModel;
+    private CookbookAdapter cookbookAdapter;
+    private FloatingActionButton addRecipe_fab;
 
     public CookbookFragment() {
-        // Required empty public constructor
-        Recipe r1 = new Recipe("Fried Chicken", "Best Southern Fried Chicken ever.", 12);
-        r1.addIngredient(new Ingredient("Chicken", 12.0f, null));
-        r1.addIngredient(new Ingredient("Flour", 1f, "cup"));
-        r1.addIngredient(new Ingredient("Salt", 1f, "tsp"));
-        r1.addIngredient(new Ingredient("Pepper", 1f, "tsp"));
-        r1.addIngredient(new Ingredient("Paprika", 1f, "tsp"));
-        r1.addIngredient(new Ingredient("eggs", 3f, null));
-        r1.addInstruction("Combine dry ingredients in a 1 gallon bag");
-        r1.addInstruction("Place chicken in bag one at a time and shake, coating with flour mixture.  This is going to be great.  I really hope you like this.");
-        cookbook.addRecipe(r1);
-        Recipe r2 = new Recipe("Hamburgers", "Move over In-N-Out", 4);
-        r2.addIngredient(new Ingredient("Ground Beef", 1, "lb"));
-        r2.addIngredient(new Ingredient("A1 Steak Sauce", 1, "Tbsp"));
-        r2.addIngredient(new Ingredient("Ketchup", 3, "Tbsp"));
-        r2.addIngredient(new Ingredient("Hamburger Buns", 1, "Package"));
-        r2.addInstruction("Mix ground beef and A1 sauce");
-        r2.addInstruction("Create four patties");
-        r2.addInstruction("Cook on grill");
-        cookbook.addRecipe(r2);
-        cookbook.addRecipe(new Recipe("Lasagna", "I feel like I'm in Italy", 6));
-        cookbook.addRecipe(new Recipe("Spaghetti", "Awesome sauce.", 6));
+
     }
 
     @Override
@@ -67,19 +51,43 @@ public class CookbookFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
 
-        try {
-            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
-            meal = args.getMeal();
-        } catch (Exception e) {
-            meal = "";
-        }
+//        try {
+//            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
+//            meal = args.getMeal();
+//        } catch (Exception e) {
+//            meal = "";
+//        }
 
-
-        cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
-        cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        cookbookRecycler.setAdapter(new CookbookAdapter(cookbook, meal));
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        addRecipe_fab = view.findViewById(R.id.fabAddRecipe);
+        addRecipe_fab.setOnClickListener( v -> {
+            Navigation.findNavController(v).navigate(R.id.action_nav_cookbook_to_addRecipeFragment);
+        });
+
+        cookbookRecycler = view.findViewById(R.id.cookbook_recylcerview);
+        cookbookViewModel = new ViewModelProvider(getActivity(), new CookbookViewModelFactory(getActivity().getApplication())).get(CookbookViewModel.class);
+        cookbookViewModel.init();
+//        cookbookViewModel.getCookbook().observe(getActivity(), new Observer<List<Recipedb>>() {
+//            @Override
+//            public void onChanged(List<Recipedb> recipedbs) {
+//                cookbookAdapter.notifyDataSetChanged();
+//            }
+//        });
+
+
+
+        cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook());
+        cookbookRecycler.setAdapter(cookbookAdapter);
+
+    }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
