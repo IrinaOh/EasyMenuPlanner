@@ -1,4 +1,5 @@
 package com.example.easymenuplanner.cookbook;
+
 import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.Ingredient;
 import java.util.ArrayList;
