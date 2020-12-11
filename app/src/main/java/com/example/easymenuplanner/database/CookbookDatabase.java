@@ -1,4 +1,4 @@
-package com.example.easymenuplanner.db;
+package com.example.easymenuplanner.database;
 
 import android.content.Context;
 
@@ -6,11 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.easymenuplanner.recipe.Recipedb;
 
 @Database(entities = {Recipedb.class}, version  = 1)
 public abstract class CookbookDatabase extends RoomDatabase {
 
-    public abstract RecipeDao recipeDao();
+    public abstract RecipeDao cookbookDao();
+    //public abstract MenuDao recipeDao();
 
     private static CookbookDatabase INSTANCE;
 
@@ -24,4 +26,6 @@ public abstract class CookbookDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+
 }

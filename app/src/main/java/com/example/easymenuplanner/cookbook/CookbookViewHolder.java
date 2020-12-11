@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.menu.MenuFragmentDirections;
 import com.example.easymenuplanner.recipe.Recipe;
+import com.example.easymenuplanner.recipe.Recipedb;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class CookbookViewHolder extends RecyclerView.ViewHolder {
@@ -25,9 +27,8 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
     TextView numServingValue_textView;
     TextView description_textView;
     ImageView menu_imageView;
-    Recipe recipe;
+    Recipedb recipe;
     CardView recipeCard;
-    String meal;
 
 
     boolean addToMenu = false;
@@ -40,12 +41,13 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
         menu_imageView = itemView.findViewById(R.id.ellipsis_menu);
         recipeCard = itemView.findViewById(R.id.cardView2);
 
+
         recipeCard.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
 
-                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
-                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
-                Navigation.findNavController(v).navigate(recipeAction);
+//                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
+//                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
+//                Navigation.findNavController(v).navigate(recipeAction);
             }
         });
 
@@ -56,15 +58,16 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.addToMenu:
-                                CookbookFragmentDirections.ActionNavCookbookToNavMenu menuAction =
-                                        CookbookFragmentDirections.actionNavCookbookToNavMenu(recipe, meal);
-                                Navigation.findNavController(v).navigate(menuAction);
-                                return true;
-                            default:
-                                return false;
-                        }
+//                        switch (item.getItemId()) {
+//                            case R.id.addToMenu:
+//                                CookbookFragmentDirections.ActionNavCookbookToNavMenu menuAction =
+//                                        CookbookFragmentDirections.actionNavCookbookToNavMenu(recipe, meal);
+//                                Navigation.findNavController(v).navigate(menuAction);
+//                                return true;
+//                            default:
+//                                return false;
+//                        }
+                        return false;
                     }
                 });
                 popup.inflate(R.menu.cookbook_card_menu);
@@ -75,18 +78,17 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bindData(Recipe recipe, String meal) {
+    public void bindData(Recipedb recipe) {
         this.recipe = recipe;
-        this.meal = meal;
-        recipeName_textView.setText(recipe.getRecipeName());
-        description_textView.setText(recipe.getDescription());
-        numServingValue_textView.setText(String.valueOf(recipe.getNumServings()));
+        recipeName_textView.setText(recipe.title);
+        description_textView.setText(recipe.description);
+        numServingValue_textView.setText(String.valueOf(recipe.numServings));
 
-        if (meal.isEmpty()) {
-            menu_imageView.setVisibility(View.INVISIBLE);
-        } else {
-            menu_imageView.setVisibility(View.VISIBLE);
-        }
+//        if (meal.isEmpty()) {
+//            menu_imageView.setVisibility(View.INVISIBLE);
+//        } else {
+//            menu_imageView.setVisibility(View.VISIBLE);
+//        }
 
     }
 

@@ -16,11 +16,12 @@
         android:id="@+id/navigation_cookbook"
         android:icon="@drawable/ic_baseline_menu_book"
         android:title="@string/nav_cookbook" />
-
     <item
-        android:id="@+id/db_cookbook"
-        android:icon="@drawable/ic_baseline_menu_book"
-        android:title="DB Cookbook" />
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_navigation_search"
+        android:title="Search" />
+
+
 
 
 </menu>

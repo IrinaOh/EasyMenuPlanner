@@ -1,35 +1,40 @@
-package com.example.easymenuplanner.recipe;
+package com.example.easymenuplanner.searchRecipe;
 
 import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class SearchRecipe {
+public class SearchRecipesApi {
     //example below:
     //https://api.edamam.com/search?q=fish&app_id=661c2e42&app_key=f2af3a7c771087f4a37bfadb93a34d97
     private final String app_id = "661c2e42";
     private final String api_key = "f2af3a7c771087f4a37bfadb93a34d97";
-    private final String baseUrl = "https://api.edamam.com/search";
+    private final String baseUrl = "https://www.edamam.com/search";
     private Gson gson;
 
-    public SearchRecipe() {
+    public SearchRecipesApi() {
         gson = new Gson();
     }
 
-    public GetRecipes getRecipes(String searchItem) {
+    public ApiRecipeGroup getRecipes(String searchItem) {
         String url = baseUrl +
                 "?q=" + searchItem +
                 "&app_id" + app_id +
                 "&api_key=" + api_key;
         String data = loadJsonData(url);
 
-        // Convert JSON data to WeatherConditions object
-        return gson.fromJson(data, GetRecipes.class);
+        // Convert JSON data to ApiRecipe object
+        //Type collectionType = new TypeToken<Collection<ApiRecipe>>(){}.getType();
+        ApiRecipeGroup hits = gson.fromJson(data, ApiRecipeGroup.class);
+        //return gson.fromJson(data, ApiRecipes.class);
+        return hits;
     }
 
     private String loadJsonData(String url) {

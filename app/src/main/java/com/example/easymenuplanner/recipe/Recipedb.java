@@ -1,10 +1,10 @@
-package com.example.easymenuplanner.db;
+package com.example.easymenuplanner.recipe;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "recipe_table")
 public class Recipedb {
     @PrimaryKey(autoGenerate = true)
     public int id;
@@ -26,5 +26,6 @@ public class Recipedb {
 
     @ColumnInfo(name = "tag")
     public String tag;
+
 
 }
