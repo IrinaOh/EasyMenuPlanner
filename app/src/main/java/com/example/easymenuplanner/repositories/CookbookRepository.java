@@ -2,11 +2,7 @@ package com.example.easymenuplanner.repositories;
 
 import android.app.Application;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.example.easymenuplanner.cookbook.Cookbook;
-import com.example.easymenuplanner.database.CookbookDao;
+import com.example.easymenuplanner.database.RecipeDao;
 import com.example.easymenuplanner.database.CookbookDatabase;
 import com.example.easymenuplanner.recipe.Recipedb;
 
@@ -14,7 +10,7 @@ import java.util.List;
 
 public class CookbookRepository {
     private static CookbookRepository instance;
-    private CookbookDao cookbookDao;
+    private RecipeDao recipeDao;
     private List<Recipedb> cookbook;
     private Application application;
 
@@ -31,17 +27,17 @@ public class CookbookRepository {
 
     public List<Recipedb> getCookbook() {
         CookbookDatabase db = CookbookDatabase.getDbInstance(application);
-        cookbookDao = db.cookbookDao();
-        cookbook = cookbookDao.getAllRecipes();
+        recipeDao = db.cookbookDao();
+        cookbook = recipeDao.getAllRecipes();
         return cookbook;
     }
 
     public void insertRecipe(Recipedb recipe) {
-        cookbookDao.insertRecipe(recipe);
+        recipeDao.insertRecipe(recipe);
     }
 
     public void deleteRecipe(Recipedb recipe) {
-        cookbookDao.delete(recipe);
+        recipeDao.delete(recipe);
     }
 
 }
