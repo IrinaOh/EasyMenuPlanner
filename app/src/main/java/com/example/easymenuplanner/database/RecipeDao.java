@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Dao
-public interface CookbookDao {
+public interface RecipeDao {
 
     @Query("SELECT * FROM recipe_table")
     List<Recipedb> getAllRecipes();
@@ -28,4 +28,5 @@ public interface CookbookDao {
 
     @Query("DELETE FROM recipe_table")
     void deleteAll();
+
 }
