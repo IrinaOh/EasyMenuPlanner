@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
+import com.example.easymenuplanner.recipe.RecipeFragmentArgs;
 import com.example.easymenuplanner.recipe.Recipedb;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,6 +30,8 @@ public class CookbookFragment extends Fragment {
     private FloatingActionButton addRecipe_fab;
     private EditText searchRecipe;
     private String searchString;
+    private Integer menuKey;
+    private Integer recipeKey;
 
     public CookbookFragment() {
 
@@ -60,20 +63,15 @@ public class CookbookFragment extends Fragment {
 //                //cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
 //            }
 //    });
-
-//        try {
-//            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
-//
-//
-//        } catch (Exception e) {
-//
-//        }
-
-
-
 //    v -> {
 //        cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
 
+        try {
+            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
+            menuKey = args.getMenuKey();
+        } catch (Exception e) {
+            menuKey = -999;
+        }
 
         addRecipe_fab = view.findViewById(R.id.fabAddRecipe);
         addRecipe_fab.setOnClickListener( v -> {
@@ -100,7 +98,7 @@ public class CookbookFragment extends Fragment {
 //        });
 
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook().getValue());
+        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook().getValue(), menuKey);
         cookbookRecycler.setAdapter(cookbookAdapter);
     }
 

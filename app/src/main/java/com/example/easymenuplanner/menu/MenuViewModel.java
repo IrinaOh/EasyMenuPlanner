@@ -56,6 +56,13 @@ public class MenuViewModel extends AndroidViewModel {
        // return liveMenus;
     }
 
+    public void replaceRecipeInMenu(int menuKey, int recipeKey) {
+        Menudb menu =  cookbookRepository.getMenuFromID(menuKey);
+        menu.recipe_id = recipeKey;
+        cookbookRepository.replaceRecipeInMenu(menu);
+    }
+
+
 //    private void readFromDatabase() {
 //
 //        dbMenus = cookbookRepository.getMenus();

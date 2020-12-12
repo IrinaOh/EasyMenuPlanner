@@ -31,6 +31,8 @@ public interface MenuDao {
     @Update
     void replaceRecipe(Menudb menu);
 
+    @Query("SELECT * FROM menu_table WHERE id = :menuID LIMIT 1")
+    Menudb getMenuFromID(int menuID);
 
     @Delete
     void delete(Menudb menudb);

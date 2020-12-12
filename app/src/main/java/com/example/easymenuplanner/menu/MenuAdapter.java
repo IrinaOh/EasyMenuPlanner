@@ -15,9 +15,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
     //private List<Menudb> menus;
     private List<MenuDisplay> menuDisplayList;
+//    private int menuKey;
+//    private int recipeKey;
 
     public MenuAdapter(List<MenuDisplay> menus) {
        menuDisplayList = menus;
+//       this.menuKey = menuKey;
+//       this.recipeKey = recipeKey;
     }
 
     @Override

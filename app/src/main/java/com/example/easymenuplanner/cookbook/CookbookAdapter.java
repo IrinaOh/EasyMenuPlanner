@@ -18,9 +18,11 @@ import java.util.List;
 public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
     private List<Recipedb> cookbook;
+    private Integer menuKey;
 
-    public CookbookAdapter(List<Recipedb> cookbook) {
+    public CookbookAdapter(List<Recipedb> cookbook, Integer menuKey) {
         this.cookbook = cookbook;
+        this.menuKey = menuKey;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class CookbookAdapter extends RecyclerView.Adapter<CookbookViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CookbookViewHolder holder, int position) {
-        holder.bindData(cookbook.get(position));
+        holder.bindData(cookbook.get(position), menuKey);
     }
 
     @Override

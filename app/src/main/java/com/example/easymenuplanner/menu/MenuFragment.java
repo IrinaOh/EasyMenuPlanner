@@ -38,6 +38,8 @@ public class MenuFragment extends Fragment {
     private MenuAdapter menuAdapter;
     private List<Menudb> menus;
     private List<MenuDisplay> menuDisplayList;
+    private int menuKey;
+    private int recipeKey;
 
     //private MenuCalendar myMenus;
 
@@ -89,6 +91,16 @@ public class MenuFragment extends Fragment {
             }
         });
 
+        try {
+            MenuFragmentArgs args = MenuFragmentArgs.fromBundle(getArguments());
+            menuKey = (int) args.getMenuKey();
+            recipeKey = (int) args.getRecipeKey();
+            menuViewModel.replaceRecipeInMenu(menuKey, recipeKey);
+
+        } catch (Exception e) {
+            menuKey = -999;
+            recipeKey = -999;
+        }
 
         menuAdapter = new MenuAdapter(menuViewModel.getMenus().getValue());
         //menuAdapter = new MenuAdapter(menus);

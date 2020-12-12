@@ -23,12 +23,14 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
     ImageView menu_imageView;
     Recipedb recipe;
     CardView recipeCard;
+    Integer menuKey;
 
 
     boolean addToMenu = false;
 
     public CookbookViewHolder(@NonNull View itemView) {
         super(itemView);
+        this.menuKey = menuKey;
         recipeName_textView = itemView.findViewById(R.id.recipeName_textView);
         description_textView = itemView.findViewById(R.id.description_textView);
         numServingValue_textView = itemView.findViewById(R.id.numServingsValue_textView);
@@ -51,16 +53,15 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-//                        switch (item.getItemId()) {
-//                            case R.id.addToMenu:
-//                                CookbookFragmentDirections.ActionNavCookbookToNavMenu menuAction =
-//                                        CookbookFragmentDirections.actionNavCookbookToNavMenu(recipe, meal);
-//                                Navigation.findNavController(v).navigate(menuAction);
-//                                return true;
-//                            default:
-//                                return false;
-//                        }
-                        return false;
+                        switch (item.getItemId()) {
+                            case R.id.addToMenu:
+                                CookbookFragmentDirections.ActionNavCookbookToNavMenu menuAction =
+                                        CookbookFragmentDirections.actionNavCookbookToNavMenu(menuKey, recipe.id);
+                                Navigation.findNavController(v).navigate(menuAction);
+                                return true;
+                            default:
+                                return false;
+                        }
                     }
                 });
                 popup.inflate(R.menu.cookbook_card_menu);
@@ -71,8 +72,9 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bindData(Recipedb recipe) {
+    public void bindData(Recipedb recipe, Integer menuKey) {
         this.recipe = recipe;
+        this.menuKey = menuKey;
         recipeName_textView.setText(recipe.title);
         description_textView.setText(recipe.description);
         numServingValue_textView.setText(String.valueOf(recipe.numServings));

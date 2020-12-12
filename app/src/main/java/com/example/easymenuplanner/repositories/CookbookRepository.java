@@ -85,6 +85,14 @@ public class CookbookRepository {
         recipeDao.insertRecipe(recipe);
     }
 
+    public Menudb getMenuFromID(int menuID) {
+        return menuDao.getMenuFromID(menuID);
+    }
+
+    public void replaceRecipeInMenu(Menudb menu) {
+        menuDao.replaceRecipe(menu);
+    }
+
     public void deleteRecipe(Recipedb recipe) {
         recipeDao.delete(recipe);
     }
