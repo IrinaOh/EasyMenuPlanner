@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.easymenuplanner.recipe.Recipedb;
 
@@ -26,6 +27,9 @@ public interface RecipeDao {
 
     @Query("SELECT * FROM recipe_table WHERE id = :recipeID LIMIT 1")
     Recipedb getRecipeFromID(int recipeID);
+
+    @Update
+    void replaceRecipe(Recipedb recipe);
 
     // Three dots means that zero or more Recipedb objects may be passed as the arguments for this
     // method.

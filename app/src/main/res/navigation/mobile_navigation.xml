@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_addRecipeFrag_to_Cookbook"
             app:destination="@id/navigation_cookbook" />
+        <argument
+            android:name="recipeKey"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/navigation_menu"

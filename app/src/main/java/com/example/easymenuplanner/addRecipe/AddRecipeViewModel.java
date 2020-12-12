@@ -37,6 +37,15 @@ public class AddRecipeViewModel extends AndroidViewModel {
         return cookbook;
     }
 
+    public Recipedb getRecipeByID(int recipeKey) {
+        Recipedb editRecipe = cookbookRepository.getRecipeFromID(recipeKey);
+        return editRecipe;
+    }
+
+    public void replaceRecipe(Recipedb recipe) {
+        cookbookRepository.replaceRecipe(recipe);
+    }
+
     public void addRecipe(String title, String desc, String ingr, String instr, String tag, int numServ) {
         Recipedb recipe = new Recipedb();
         recipe.title = title;

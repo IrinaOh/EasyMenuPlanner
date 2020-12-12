@@ -81,6 +81,10 @@ public class CookbookRepository {
         return menu;
     }
 
+    public void replaceRecipe(Recipedb recipe) {
+        recipeDao.replaceRecipe(recipe);
+    }
+
     public void insertRecipe(Recipedb recipe) {
         recipeDao.insertRecipe(recipe);
     }

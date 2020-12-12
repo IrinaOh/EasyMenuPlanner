@@ -59,6 +59,13 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
                                         CookbookFragmentDirections.actionNavCookbookToNavMenu(menuKey, recipe.id);
                                 Navigation.findNavController(v).navigate(menuAction);
                                 return true;
+                            case R.id.editRecipe:
+                                CookbookFragmentDirections.ActionNavCookbookToAddRecipeFragment editRecipeAction =
+                                        CookbookFragmentDirections.actionNavCookbookToAddRecipeFragment(recipe.id);
+                                Navigation.findNavController(v).navigate(editRecipeAction);
+
+                            //case R.id.deleteRecipe:
+
                             default:
                                 return false;
                         }

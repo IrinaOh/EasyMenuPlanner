@@ -3,4 +3,13 @@
     <item
         android:id="@+id/addToMenu"
         android:title="Add to Menu"/>
+
+    <item
+        android:id="@+id/editRecipe"
+        android:title="Edit Recipe"/>
+
+<!--   <item-->
+<!--        android:id="@+id/deleteRecipe"-->
+<!--        android:title="Delete Recipe" />-->
+
 </menu>
