@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
@@ -37,9 +38,9 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
         recipeCard.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
 
-//                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
-//                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
-//                Navigation.findNavController(v).navigate(recipeAction);
+                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
+                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe.title,recipe.ingredients,recipe.directions);
+                Navigation.findNavController(v).navigate(recipeAction);
             }
         });
 

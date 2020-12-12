@@ -1,35 +1,25 @@
 package com.example.easymenuplanner.cookbook;
 
-import android.content.ComponentName;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-
-import androidx.navigation.Navigation;
-
 import com.example.easymenuplanner.R;
-import com.example.easymenuplanner.home.HomeFragment;
-import com.example.easymenuplanner.recipe.Ingredient;
-import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.Recipedb;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class CookbookFragment extends Fragment {
@@ -55,12 +45,6 @@ public class CookbookFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
 
-//        try {
-//            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
-//            meal = args.getMeal();
-//        } catch (Exception e) {
-//            meal = "";
-//        }
 
         return view;
     }
@@ -76,6 +60,14 @@ public class CookbookFragment extends Fragment {
 //                //cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
 //            }
 //    });
+
+//        try {
+//            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
+//
+//
+//        } catch (Exception e) {
+//
+//        }
 
 
 
