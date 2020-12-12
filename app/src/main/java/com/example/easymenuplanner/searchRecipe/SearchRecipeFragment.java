@@ -4,45 +4,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
-import com.example.easymenuplanner.cookbook.CookbookAdapter;
-import com.example.easymenuplanner.menu.MenuFragmentDirections;
-import com.example.easymenuplanner.recipe.Recipedb;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 public class SearchRecipeFragment extends Fragment {
 
     private EditText et_searchItem;
     //private ListView lv_recipesHits;
-    private RecyclerView recyclerView_recipeHits;
+    //private RecyclerView recyclerView_recipeHits;
     private Button bt_searchButton;
+    private List<ApiRecipeTop> allRecipes;
     //private SearchRecipeViewModel searchViewModel;
-    private MutableLiveData<List<ApiRecipeTop>> allRecipes;
-    private SearchRecipeAdapter searchAdapter;
+    //private MutableLiveData<List<ApiRecipeTop>> allRecipes;
+    //private SearchRecipeAdapter searchAdapter;
 
     public SearchRecipeFragment() {
-        allRecipes = new MutableLiveData<>();
+        //allRecipes = new MutableLiveData<>();
+
     }
 
     @Override
@@ -68,7 +54,7 @@ public class SearchRecipeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //searchViewModel = new SearchRecipeViewModel(getActivity());
         et_searchItem = view.findViewById(R.id.etSearchItem);
-        recyclerView_recipeHits = view.findViewById(R.id.rv_recipeHits);
+        //recyclerView_recipeHits = view.findViewById(R.id.rv_recipeHits);
         bt_searchButton = view.findViewById(R.id.btSearchButton);
         bt_searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,16 +64,16 @@ public class SearchRecipeFragment extends Fragment {
             }
         });
 
-        allRecipes.observe(getViewLifecycleOwner(), new Observer<List<ApiRecipeTop>>() {
-            @Override
-            public void onChanged(List<ApiRecipeTop> apiRecipeTops) {
-                searchAdapter.notifyDataSetChanged();
-            }
-        });
+//        allRecipes.observe(getViewLifecycleOwner(), new Observer<List<ApiRecipeTop>>() {
+//            @Override
+//            public void onChanged(List<ApiRecipeTop> apiRecipeTops) {
+//                searchAdapter.notifyDataSetChanged();
+//            }
+//        });
 
-        recyclerView_recipeHits.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        searchAdapter = new SearchRecipeAdapter(allRecipes.getValue());
-        recyclerView_recipeHits.setAdapter(searchAdapter);
+//        recyclerView_recipeHits.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//        searchAdapter = new SearchRecipeAdapter(allRecipes.getValue());
+//        recyclerView_recipeHits.setAdapter(searchAdapter);
     }
 
     @Override
@@ -112,7 +98,7 @@ public class SearchRecipeFragment extends Fragment {
 
     private void displayHits(ApiRecipeGroup hits) {
         List<ApiRecipeTop> hitRecipes = hits.getAllRecipes();
-        allRecipes.setValue(hitRecipes);
+        //allRecipes.setValue(hitRecipes);
     }
     
     private class ApiSearchTask extends Thread {
