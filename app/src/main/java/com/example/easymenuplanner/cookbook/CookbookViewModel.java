@@ -2,9 +2,7 @@ package com.example.easymenuplanner.cookbook;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.easymenuplanner.recipe.Recipedb;
@@ -18,7 +16,7 @@ public class CookbookViewModel extends AndroidViewModel {
     private MutableLiveData<List<Recipedb>> liveCookbook;
     private List<Recipedb> cookbook;
     Application application;
-    String recipeName;
+//    String recipeName;
 
     public CookbookViewModel(Application application) {
         super(application);
@@ -35,15 +33,15 @@ public class CookbookViewModel extends AndroidViewModel {
         liveCookbook.setValue(cookbook);
     }
 
-    public MutableLiveData<List<Recipedb>> findRecipe() {
-        cookbook = cookbookRepository.findRecipe(recipeName);
-        liveCookbook.setValue(cookbook);
-        return liveCookbook;
-    }
-
-    public void sendString(String recipeName) {
-        this.recipeName = recipeName;
-    }
+//    public MutableLiveData<List<Recipedb>> findRecipe() {
+//        cookbook = cookbookRepository.findRecipe(recipeName);
+//        liveCookbook.setValue(cookbook);
+//        return liveCookbook;
+//    }
+//
+//    public void sendString(String recipeName) {
+//        this.recipeName = recipeName;
+//    }
 
     public MutableLiveData<List<Recipedb>> getCookbook() {
         readFromDatabase();

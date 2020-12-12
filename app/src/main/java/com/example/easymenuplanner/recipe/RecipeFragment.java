@@ -9,18 +9,19 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
 
 
 public class RecipeFragment extends Fragment {
 
-    RecyclerView ingredientRecycler;
-    RecyclerView instructionRecycler;
-    Recipe r1;
-    TextView recipeName;
+    TextView tv_recipeName;
+    TextView tv_ingredients;
+    TextView tv_instructions;
+    String recipeName;
+    String ingredients;
+    String instructions;
+
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -58,24 +59,27 @@ public class RecipeFragment extends Fragment {
         // Inflate the layout for this fragment
         try {
             RecipeFragmentArgs args = RecipeFragmentArgs.fromBundle(getArguments());
-            r1 = args.getRecipe();
+            recipeName = args.getRecipeName();
+            ingredients = args.getIngredients();
+            instructions = args.getInstructions();
+
         } catch (Exception e) {
+            recipeName = "No recipe";
+            ingredients = "";
+            instructions = "";
 
         }
 
-
         View view = inflater.inflate(R.layout.fragment_recipe, container, false);
-        ingredientRecycler = view.findViewById(R.id.ingredients_RecyclerView);
-        ingredientRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        ingredientRecycler.setAdapter(new IngredientAdapter(r1));
 
-        instructionRecycler = view.findViewById(R.id.instructions_RecyclerView);
-        instructionRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        instructionRecycler.setAdapter(new InstructionAdapter(r1));
+        tv_recipeName = view.findViewById(R.id.tvRecipeNameDb);
+        tv_recipeName.setText(recipeName);
 
-        recipeName = view.findViewById(R.id.recipeName_recipeView);
-        recipeName.setText(r1.getRecipeName());
+        tv_ingredients = view.findViewById(R.id.tvIngredientsDb);
+        tv_ingredients.setText(ingredients);
 
+        tv_instructions = view.findViewById(R.id.tvInstructionsDb);
+        tv_instructions.setText(instructions);
 
         return view;
     }

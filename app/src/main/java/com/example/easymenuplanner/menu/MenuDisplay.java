@@ -31,4 +31,8 @@ public class MenuDisplay {
     public void setDate(Calendar date) {
         this.date = date;
     }
+
+    public int getMenuID() {
+        return menuID;
+    }
 }

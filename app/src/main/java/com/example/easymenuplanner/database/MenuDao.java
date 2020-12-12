@@ -31,6 +31,7 @@ public interface MenuDao {
     @Update
     void replaceRecipe(Menudb menu);
 
+
     @Delete
     void delete(Menudb menudb);
 

@@ -1,7 +1,5 @@
 package com.example.easymenuplanner.cookbook;
 
-import android.content.Context;
-import android.media.Image;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,11 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
-import com.example.easymenuplanner.menu.MenuFragmentDirections;
-import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.Recipedb;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 public class CookbookViewHolder extends RecyclerView.ViewHolder {
 
@@ -44,9 +38,9 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
         recipeCard.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
 
-//                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
-//                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe);
-//                Navigation.findNavController(v).navigate(recipeAction);
+                CookbookFragmentDirections.ActionNavCookbookToNavRecipe recipeAction =
+                        CookbookFragmentDirections.actionNavCookbookToNavRecipe(recipe.title,recipe.ingredients,recipe.directions);
+                Navigation.findNavController(v).navigate(recipeAction);
             }
         });
 

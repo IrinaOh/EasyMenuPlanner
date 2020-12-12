@@ -25,7 +25,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/recipeName_recipeView"
+                android:id="@+id/tvRecipeNameDb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -41,13 +41,14 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ingredients_RecyclerView"
+            <TextView
+                android:id="@+id/tvIngredientsDb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="193dp"
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/instructions_textView"
+                android:id="@+id/instructions_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/instructionsTitle"
@@ -55,10 +56,11 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/instructions_RecyclerView"
+            <TextView
+                android:id="@+id/tvInstructionsDb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="245dp"
+                android:text="TextView" />
 
         </LinearLayout>
     </ScrollView>
