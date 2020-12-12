@@ -15,8 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
+import com.example.easymenuplanner.cookbook.CookbookAdapter;
 import com.example.easymenuplanner.menu.MenuFragmentDirections;
 
 import java.util.ArrayList;
@@ -27,7 +30,8 @@ import java.util.List;
 public class SearchRecipeFragment extends Fragment {
 
     private EditText et_searchItem;
-    private ListView lv_recipesHits;
+    //private ListView lv_recipesHits;
+    private RecyclerView recyclerView_recipeHits;
     private Button bt_searchButton;
     //private SearchRecipeViewModel searchViewModel;
     private List<ApiRecipeTop> allRecipes;
@@ -49,8 +53,16 @@ public class SearchRecipeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_search_recipe, container, false);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //searchViewModel = new SearchRecipeViewModel(getActivity());
         et_searchItem = view.findViewById(R.id.etSearchItem);
-        lv_recipesHits = view.findViewById(R.id.lvRecipesHits);
+        recyclerView_recipeHits = view.findViewById(R.id.rv_recipeHits);
         bt_searchButton = view.findViewById(R.id.btSearchButton);
         bt_searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,14 +71,10 @@ public class SearchRecipeFragment extends Fragment {
                 task.start();
             }
         });
-        return view;
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //searchViewModel = new SearchRecipeViewModel(getActivity());
 
+        recyclerView_recipeHits.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView_recipeHits.setAdapter(new SearchRecipeAdapter(allRecipes));
     }
 
     @Override
