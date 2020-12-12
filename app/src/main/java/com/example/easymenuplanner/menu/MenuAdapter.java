@@ -13,10 +13,11 @@ import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
-    private List<Menudb> menus;
+    //private List<Menudb> menus;
+    private List<MenuDisplay> menuDisplayList;
 
-    public MenuAdapter(List<Menudb> menus) {
-       this.menus = menus;
+    public MenuAdapter(List<MenuDisplay> menus) {
+       menuDisplayList = menus;
     }
 
     @Override
@@ -33,11 +34,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.bindData(menus.get(position));
+        holder.bindData(menuDisplayList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return menus.size();
+        return menuDisplayList.size();
     }
 }

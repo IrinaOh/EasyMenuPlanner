@@ -53,6 +53,8 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         addDinnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 //                MenuFragmentDirections.ActionNavigationMenuToNavigationCookbook action =
 //                        MenuFragmentDirections.actionNavigationMenuToNavigationCookbook("Dinner");
                // Navigation.findNavController(v).navigate(action);
@@ -69,12 +71,10 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bindData(Menudb menu) {
-        this.menu = menu;
-        dinnerRecipeName.setText("Hard Coded Recipe");
-
+    public void bindData(MenuDisplay menu) {
+        dinnerRecipeName.setText(menu.getRecipe().title);
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
-        String strDate = formatter.format(menu.date);
+        String strDate = formatter.format(menu.getDate().getTime());
         menuDate.setText(strDate);
     }
 }

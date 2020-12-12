@@ -34,10 +34,8 @@ import java.util.List;
 public class SearchRecipeFragment extends Fragment {
 
     private EditText et_searchItem;
-    //private ListView lv_recipesHits;
     private RecyclerView recyclerView_recipeHits;
     private Button bt_searchButton;
-    //private SearchRecipeViewModel searchViewModel;
     private MutableLiveData<List<ApiRecipeTop>> allRecipes;
     private SearchRecipeAdapter searchAdapter;
 
@@ -58,15 +56,6 @@ public class SearchRecipeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_search_recipe, container, false);
-
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //searchViewModel = new SearchRecipeViewModel(getActivity());
         et_searchItem = view.findViewById(R.id.etSearchItem);
         recyclerView_recipeHits = view.findViewById(R.id.rv_recipeHits);
         bt_searchButton = view.findViewById(R.id.btSearchButton);
@@ -88,6 +77,15 @@ public class SearchRecipeFragment extends Fragment {
         recyclerView_recipeHits.setLayoutManager(new LinearLayoutManager(view.getContext()));
         searchAdapter = new SearchRecipeAdapter(allRecipes.getValue());
         recyclerView_recipeHits.setAdapter(searchAdapter);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //searchViewModel = new SearchRecipeViewModel(getActivity());
+
     }
 
     @Override

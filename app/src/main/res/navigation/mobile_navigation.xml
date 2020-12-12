@@ -25,8 +25,8 @@
             android:id="@+id/action_nav_cookbook_to_addRecipeFragment"
             app:destination="@id/addRecipeFragment" />
         <argument
-            android:name="date"
-            app:argType="java.util.Calendar" />
+            android:name="menuKey"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/navigation_recipe"
@@ -57,6 +57,12 @@
         <action
             android:id="@+id/action_navigation_menu_to_navigation_recipe"
             app:destination="@id/navigation_recipe" />
+        <argument
+            android:name="menuKey"
+            app:argType="integer" />
+        <argument
+            android:name="recipeKey"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/navigation_search"

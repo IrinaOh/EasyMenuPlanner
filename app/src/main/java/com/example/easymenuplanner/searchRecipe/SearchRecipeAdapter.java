@@ -10,13 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.cookbook.CookbookViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchRecipeAdapter extends RecyclerView.Adapter<SearchRecipeViewHolder> {
-    List<ApiRecipeTop> allRecipes;
+    List<ApiRecipeTop> allRecipes = new ArrayList<>();
 
     public SearchRecipeAdapter(List<ApiRecipeTop> allRecipes) {
         this.allRecipes = allRecipes;
+        if (allRecipes == null) {
+            allRecipes = new ArrayList<>();
+        }
     }
 
     @NonNull

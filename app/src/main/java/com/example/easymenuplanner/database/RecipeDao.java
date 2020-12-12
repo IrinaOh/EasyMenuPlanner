@@ -21,6 +21,12 @@ public interface RecipeDao {
     @Query("SELECT * FROM recipe_table WHERE title LIKE :rTitle")
     List<Recipedb> findRecipe(String rTitle);
 
+    @Query("SELECT * FROM recipe_table WHERE title LIKE :rTitle LIMIT 1")
+    int getRecipeID(String rTitle);
+
+    @Query("SELECT * FROM recipe_table WHERE id = :recipeID LIMIT 1")
+    Recipedb getRecipeFromID(int recipeID);
+
     // Three dots means that zero or more Recipedb objects may be passed as the arguments for this
     // method.
     @Insert
