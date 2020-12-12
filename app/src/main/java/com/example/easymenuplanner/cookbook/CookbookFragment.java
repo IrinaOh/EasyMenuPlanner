@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
 import androidx.navigation.Navigation;
 
 import com.example.easymenuplanner.R;
@@ -35,6 +37,8 @@ public class CookbookFragment extends Fragment {
     private CookbookViewModel cookbookViewModel;
     private CookbookAdapter cookbookAdapter;
     private FloatingActionButton addRecipe_fab;
+    private EditText searchRecipe;
+    private String searchString;
 
     public CookbookFragment() {
 
@@ -64,6 +68,20 @@ public class CookbookFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        searchRecipe = view.findViewById(R.id.etSearchCookbook);
+//        searchRecipe.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cookbookViewModel.sendString(searchRecipe.getText().toString().trim());
+//                //cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
+//            }
+//    });
+
+
+
+//    v -> {
+//        cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
+
 
         addRecipe_fab = view.findViewById(R.id.fabAddRecipe);
         addRecipe_fab.setOnClickListener( v -> {
@@ -80,6 +98,14 @@ public class CookbookFragment extends Fragment {
                 cookbookAdapter.notifyDataSetChanged();
             }
         });
+
+
+//        cookbookViewModel.findRecipe().observe(getViewLifecycleOwner(), new Observer<List<Recipedb>>() {
+//            @Override
+//            public void onChanged(List<Recipedb> recipedbs) {
+//                cookbookAdapter.notifyDataSetChanged();
+//            }
+//        });
 
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
         cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook().getValue());

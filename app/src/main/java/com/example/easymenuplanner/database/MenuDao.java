@@ -16,8 +16,8 @@ public interface MenuDao {
     @Query("SELECT * FROM menu_table")
     List<Menudb> getAllMenus();
 
-    @Query("SELECT * FROM menu_table WHERE recipe_id == :id")
-    Menudb findRecipeByID(int id);
+    @Query("SELECT * FROM recipe_table WHERE id LIKE :id")
+    Recipedb findRecipeByID(int id);
 
     // Three dots means that zero or more Recipedb objects may be passed as the arguments for this
     // method.

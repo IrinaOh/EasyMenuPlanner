@@ -18,6 +18,7 @@ public class CookbookViewModel extends AndroidViewModel {
     private MutableLiveData<List<Recipedb>> liveCookbook;
     private List<Recipedb> cookbook;
     Application application;
+    String recipeName;
 
     public CookbookViewModel(Application application) {
         super(application);
@@ -32,6 +33,16 @@ public class CookbookViewModel extends AndroidViewModel {
         cookbook = cookbookRepository.getCookbook();
         liveCookbook = new MutableLiveData<>();
         liveCookbook.setValue(cookbook);
+    }
+
+    public MutableLiveData<List<Recipedb>> findRecipe() {
+        cookbook = cookbookRepository.findRecipe(recipeName);
+        liveCookbook.setValue(cookbook);
+        return liveCookbook;
+    }
+
+    public void sendString(String recipeName) {
+        this.recipeName = recipeName;
     }
 
     public MutableLiveData<List<Recipedb>> getCookbook() {

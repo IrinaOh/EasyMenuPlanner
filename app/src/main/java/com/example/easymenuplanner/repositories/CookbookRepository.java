@@ -36,6 +36,13 @@ public class CookbookRepository {
         return cookbook;
     }
 
+    public List<Recipedb> findRecipe(String recipeName) {
+        CookbookDatabase db = CookbookDatabase.getDbInstance(application);
+        recipeDao = db.cookbookDao();
+        cookbook = recipeDao.findRecipe(recipeName);
+        return cookbook;
+    }
+
     public List<Menudb> getMenus() {
         CookbookDatabase db = CookbookDatabase.getDbInstance(application);
         menuDao = db.menuDao();

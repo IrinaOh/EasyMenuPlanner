@@ -41,7 +41,6 @@ public class CookbookViewHolder extends RecyclerView.ViewHolder {
         menu_imageView = itemView.findViewById(R.id.ellipsis_menu);
         recipeCard = itemView.findViewById(R.id.cardView2);
 
-
         recipeCard.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
 

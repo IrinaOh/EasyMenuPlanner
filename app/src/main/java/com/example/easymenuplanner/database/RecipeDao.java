@@ -15,8 +15,11 @@ import java.util.List;
 @Dao
 public interface RecipeDao {
 
-    @Query("SELECT * FROM recipe_table")
+    @Query("SELECT * FROM recipe_table ORDER BY title ASC")
     List<Recipedb> getAllRecipes();
+
+    @Query("SELECT * FROM recipe_table WHERE title LIKE :rTitle")
+    List<Recipedb> findRecipe(String rTitle);
 
     // Three dots means that zero or more Recipedb objects may be passed as the arguments for this
     // method.

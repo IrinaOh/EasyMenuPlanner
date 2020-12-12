@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.easymenuplanner.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
@@ -30,7 +31,6 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         addDinnerButton = itemView.findViewById(R.id.btAddDinner);
         deleteDinnerButton = itemView.findViewById(R.id.btDeleteDinner);
         dinnerCV = itemView.findViewById(R.id.cvDinnerRecipe);
-
 
         //*************View Recipes Listeners on Cards ******
 
@@ -71,12 +71,10 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(Menudb menu) {
         this.menu = menu;
-        int recipe_id = menu.recipe_id;
-//        dinnerRecipeName.setText(menu.);
-//
-//        SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
-//        Date date = menu.getDate().getTime();
-//        String strDate = formatter.format(date);
-//        menuDate.setText(strDate);
+        dinnerRecipeName.setText("Hard Coded Recipe");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
+        String strDate = formatter.format(menu.date);
+        menuDate.setText(strDate);
     }
 }

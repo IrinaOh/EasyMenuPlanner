@@ -26,18 +26,31 @@ import com.example.easymenuplanner.recipe.Recipe;
 import com.example.easymenuplanner.recipe.RecipeFragmentArgs;
 import com.example.easymenuplanner.recipe.Recipedb;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MenuFragment extends Fragment {
 
-    private MenuViewModel menuViewModel;
+    //private MenuViewModel menuViewModel;
     private ViewPager2 pagerView;
     private MenuAdapter menuAdapter;
+    private List<Menudb> menus;
 
     //private MenuCalendar myMenus;
 
     public MenuFragment() {
         // Required empty public constructor
+        // Temp Code for passing menus
+        menus = new ArrayList<>();
+
+        Menudb mMenu = new Menudb();
+        mMenu.id = 1;
+        Calendar today = Calendar.getInstance();
+        Date date = today.getTime();
+        mMenu.date = date;
+        menus.add(mMenu);
     }
 
     @Override
@@ -66,17 +79,18 @@ public class MenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         pagerView = view.findViewById(R.id.vp2Menu);
-        menuViewModel = new ViewModelProvider(getActivity(), new MenuViewModelFactory(getActivity().getApplication())).get(MenuViewModel.class);
-        menuViewModel.init();
-        menuViewModel.getMenus().observe(getViewLifecycleOwner(), new Observer<List<Menudb>>() {
-            @Override
-            public void onChanged(List<Menudb> menudbsdbs) {
-                menuAdapter.notifyDataSetChanged();
-            }
-        });
+//        menuViewModel = new ViewModelProvider(getActivity(), new MenuViewModelFactory(getActivity().getApplication())).get(MenuViewModel.class);
+//        menuViewModel.init();
+//        menuViewModel.getMenus().observe(getViewLifecycleOwner(), new Observer<List<Menudb>>() {
+//            @Override
+//            public void onChanged(List<Menudb> menudbsdbs) {
+//                menuAdapter.notifyDataSetChanged();
+//            }
+//        });
 
 
-        menuAdapter = new MenuAdapter(menuViewModel.getMenus().getValue());
+//        menuAdapter = new MenuAdapter(menuViewModel.getMenus().getValue());
+        menuAdapter = new MenuAdapter(menus);
         pagerView.setAdapter(menuAdapter);
 
         pagerView.setClipToPadding(false);
