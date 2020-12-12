@@ -22,7 +22,7 @@ public interface MenuDao {
     // Three dots means that zero or more Recipedb objects may be passed as the arguments for this
     // method.
     @Insert
-    void insertRecipe(Menudb... menudbs);
+    void insertRecipe(Menudb... menudb);
 
     @Delete
     void delete(Menudb menudb);

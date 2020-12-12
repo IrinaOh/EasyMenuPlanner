@@ -10,6 +10,7 @@ import androidx.room.TypeConverters;
 import com.example.easymenuplanner.menu.Menudb;
 import com.example.easymenuplanner.recipe.Recipedb;
 
+//@Database(entities = {Recipedb.class}, version  = 1)
 @Database(entities = {Recipedb.class, Menudb.class}, version  = 1)
 @TypeConverters({Converters.class})
 public abstract class CookbookDatabase extends RoomDatabase {
