@@ -52,8 +52,10 @@ public class SearchRecipeFragment extends Fragment {
         bt_searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
-                task.start();
+                new Thread(new ApiRunnable(getActivity(), getContext(), et_searchItem.getText().toString())).start();
+
+//                ApiSearchTask task = new ApiSearchTask(et_searchItem.getText().toString());
+//                task.start();
             }
         });
 
