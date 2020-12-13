@@ -25,4 +25,6 @@
     <string name="deleteRecipe">Delete</string>
     <string name="searchRecipeTitle">Search for recipes:</string>
     <string name="searchButton">Search</string>
+    <string name="menuDescription">Descrition</string>
+    <string name="menuIngredients">Ingredients</string>
 </resources>

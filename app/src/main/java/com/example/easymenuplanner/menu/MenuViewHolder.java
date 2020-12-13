@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.easymenuplanner.R;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class MenuViewHolder extends RecyclerView.ViewHolder {
 
     private Menudb menu;
     private TextView menuDate;
     private TextView dinnerRecipeName;
+    private TextView menuDescription;
+    private TextView menuIngredients;
     private Button addDinnerButton;
     private Button deleteDinnerButton;
     private CardView dinnerCV;
@@ -29,6 +29,8 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         menuDate = itemView.findViewById(R.id.tvMenuDate);
         dinnerRecipeName = itemView.findViewById(R.id.tvDinnerRecipeName);
+        menuIngredients = itemView.findViewById(R.id.tvIngredients);
+        menuDescription = itemView.findViewById(R.id.tvDescription);
         addDinnerButton = itemView.findViewById(R.id.btAddDinner);
         deleteDinnerButton = itemView.findViewById(R.id.btDeleteDinner);
         dinnerCV = itemView.findViewById(R.id.cvDinnerRecipe);
@@ -38,13 +40,13 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         dinnerCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (dinnerRecipeName.getText().equals("")) {
-//
-//                } else {
-//                    MenuFragmentDirections.ActionNavigationMenuToNavigationRecipe action =
-//                            MenuFragmentDirections.actionNavigationMenuToNavigationRecipe(menu.getRecipe(2));
-//                    Navigation.findNavController(v).navigate(action);
-//                }
+                if (dinnerRecipeName.getText().equals("")) {
+
+                } else {
+                    MenuFragmentDirections.ActionNavigationMenuToNavigationRecipe action =
+                            MenuFragmentDirections.actionNavigationMenuToNavigationRecipe(menuDisplay.getRecipe().title, menuDisplay.getRecipe().ingredients,menuDisplay.getRecipe().directions);
+                    Navigation.findNavController(v).navigate(action);
+                }
             }
         });
 
@@ -66,6 +68,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
 
+
             }
         });
     }
@@ -73,6 +76,8 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
     public void bindData(MenuDisplay menu) {
         menuDisplay = menu;
         dinnerRecipeName.setText(menu.getRecipe().title);
+        menuDescription.setText(menu.getRecipe().description);
+        menuIngredients.setText(menu.getRecipe().ingredients);
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
         String strDate = formatter.format(menu.getDate().getTime());
         menuDate.setText(strDate);
