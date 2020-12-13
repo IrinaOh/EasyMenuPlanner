@@ -26,7 +26,7 @@ import java.net.URL;
 
 public class SearchRecipeViewHolder extends RecyclerView.ViewHolder {
 
-    
+
     private TextView recipeLabel;
     private TextView recipeURL;
     private String hyperlink;

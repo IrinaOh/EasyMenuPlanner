@@ -79,5 +79,5 @@
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.easymenuplanner.searchRecipe.SearchRecipeFragment"
-        android:label="SearchRecipeFragment" />
+        android:label="Online Search" />
 </navigation>
