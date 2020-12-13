@@ -69,6 +69,7 @@ public class AddRecipeFragment extends Fragment {
                 editRecipe.description = recipe_desc.getText().toString().trim();
                 editRecipe.ingredients = recipe_ingredients.getText().toString().trim();
                 editRecipe.directions = recipe_instructions.getText().toString().trim();
+                editRecipe.numServings = Integer.parseInt(recipe_servings.getText().toString().trim());
                 editRecipe.tag = recipe_tag.getText().toString().trim();
                 addRecipeViewModel.replaceRecipe(editRecipe);
             }
