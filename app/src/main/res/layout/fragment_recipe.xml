@@ -27,16 +27,17 @@
             <TextView
                 android:id="@+id/tvRecipeNameDb"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:layout_height="60dp"
+                android:gravity="center"
                 android:text="@string/recipeName_text"
                 android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/ingredientTitle_textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="@string/ingredientTitle"
+                android:gravity="center_vertical"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -44,14 +45,16 @@
             <TextView
                 android:id="@+id/tvIngredientsDb"
                 android:layout_width="match_parent"
-                android:layout_height="193dp"
+                android:layout_height="120dp"
+                android:textSize="18dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/instructions_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="@string/instructionsTitle"
+                android:gravity="center_vertical"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -60,6 +63,7 @@
                 android:id="@+id/tvInstructionsDb"
                 android:layout_width="match_parent"
                 android:layout_height="245dp"
+                android:textSize="18dp"
                 android:text="TextView" />
 
         </LinearLayout>

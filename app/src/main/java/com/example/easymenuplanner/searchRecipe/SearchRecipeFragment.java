@@ -10,6 +10,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easymenuplanner.R;
 
@@ -20,12 +21,12 @@ public class SearchRecipeFragment extends Fragment {
     private EditText et_searchItem;
 
     //private ListView lv_recipesHits;
-    //private RecyclerView recyclerView_recipeHits;
+    private RecyclerView recyclerView_recipeHits;
     private Button bt_searchButton;
     private List<ApiRecipeTop> allRecipes;
     //private SearchRecipeViewModel searchViewModel;
     //private MutableLiveData<List<ApiRecipeTop>> allRecipes;
-    //private SearchRecipeAdapter searchAdapter;
+    private SearchRecipeAdapter searchAdapter;
 
     public SearchRecipeFragment() {
         //allRecipes = new MutableLiveData<>();
