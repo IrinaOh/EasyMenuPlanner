@@ -19,7 +19,7 @@
     <string name="ellipsis">drop down menu</string>
     <string name="breakfastTitle">Breakfast</string>
     <string name="lunchTitle">Lunch</string>
-    <string name="dinnerTitle">Dinner</string>
+    <string name="dinnerTitle">Todays Menu</string>
     <string name="menuDate">Friday - December 4</string>
     <string name="addRecipe">Add</string>
     <string name="deleteRecipe">Delete</string>

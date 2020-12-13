@@ -67,8 +67,9 @@ public class MenuViewHolder extends RecyclerView.ViewHolder {
         deleteDinnerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                dinnerRecipeName.setText("");
+                menuDescription.setText("");
+                menuIngredients.setText("");
             }
         });
     }
