@@ -8,6 +8,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.easymenuplanner.R;
 import com.example.easymenuplanner.recipe.Recipedb;
 
 import java.util.ArrayList;
@@ -16,7 +17,10 @@ import java.util.List;
 @Dao
 public interface RecipeDao {
 
-    @Query("SELECT * FROM recipe_table ORDER BY title ASC")
+//    @Query("SELECT * FROM recipe_table ORDER BY title ASC")
+//    List<Recipedb> getAllRecipes();
+
+    @Query("SELECT * FROM recipe_table WHERE title NOT LIKE '' ORDER BY title ASC")
     List<Recipedb> getAllRecipes();
 
     @Query("SELECT * FROM recipe_table WHERE title LIKE :rTitle")

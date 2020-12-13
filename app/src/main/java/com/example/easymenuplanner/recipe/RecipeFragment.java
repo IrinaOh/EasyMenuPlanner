@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.easymenuplanner.R;
 
@@ -47,8 +49,18 @@ public class RecipeFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        // This callback will only be called when MyFragment is at least Started.
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+                Navigation.findNavController(getView()).navigate(R.id.action_navRecipe_to_navCookbook);
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+
+        // The callback can be enabled or disabled here or in handleOnBackPressed()
 
     }
 
@@ -56,7 +68,10 @@ public class RecipeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_recipe, container, false);
+
         try {
             RecipeFragmentArgs args = RecipeFragmentArgs.fromBundle(getArguments());
             recipeName = args.getRecipeName();
@@ -69,8 +84,6 @@ public class RecipeFragment extends Fragment {
             instructions = "";
 
         }
-
-        View view = inflater.inflate(R.layout.fragment_recipe, container, false);
 
         tv_recipeName = view.findViewById(R.id.tvRecipeNameDb);
         tv_recipeName.setText(recipeName);
@@ -89,4 +102,7 @@ public class RecipeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
     }
+
+
+
 }
