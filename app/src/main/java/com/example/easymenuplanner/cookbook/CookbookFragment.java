@@ -1,33 +1,27 @@
 package com.example.easymenuplanner.cookbook;
 
-import android.content.ComponentName;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import androidx.navigation.Navigation;
-
 import com.example.easymenuplanner.R;
-import com.example.easymenuplanner.home.HomeFragment;
-import com.example.easymenuplanner.recipe.Ingredient;
-import com.example.easymenuplanner.recipe.Recipe;
+import com.example.easymenuplanner.recipe.RecipeFragmentArgs;
 import com.example.easymenuplanner.recipe.Recipedb;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class CookbookFragment extends Fragment {
@@ -35,6 +29,11 @@ public class CookbookFragment extends Fragment {
     private CookbookViewModel cookbookViewModel;
     private CookbookAdapter cookbookAdapter;
     private FloatingActionButton addRecipe_fab;
+    private EditText searchRecipe;
+    private String searchString;
+    private Integer menuKey;
+    private Integer recipeKey;
+    private Button searchButton;
 
     public CookbookFragment() {
 
@@ -51,12 +50,6 @@ public class CookbookFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cookbook, container, false);
 
-//        try {
-//            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
-//            meal = args.getMeal();
-//        } catch (Exception e) {
-//            meal = "";
-//        }
 
         return view;
     }
@@ -64,6 +57,24 @@ public class CookbookFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        searchRecipe = view.findViewById(R.id.etSearchCookbook);
+        searchButton = view.findViewById(R.id.cookbookSearchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //cookbookViewModel.sendString(searchRecipe.getText().toString().trim());
+                cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
+            }
+    });
+//    v -> {
+//        cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
+
+        try {
+            CookbookFragmentArgs args = CookbookFragmentArgs.fromBundle(getArguments());
+            menuKey = args.getMenuKey();
+        } catch (Exception e) {
+            menuKey = -999;
+        }
 
         addRecipe_fab = view.findViewById(R.id.fabAddRecipe);
         addRecipe_fab.setOnClickListener( v -> {
@@ -81,8 +92,16 @@ public class CookbookFragment extends Fragment {
             }
         });
 
+
+//        cookbookViewModel.findRecipe().observe(getViewLifecycleOwner(), new Observer<List<Recipedb>>() {
+//            @Override
+//            public void onChanged(List<Recipedb> recipedbs) {
+//                cookbookAdapter.notifyDataSetChanged();
+//            }
+//        });
+
         cookbookRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook().getValue());
+        cookbookAdapter = new CookbookAdapter(cookbookViewModel.getCookbook().getValue(), menuKey);
         cookbookRecycler.setAdapter(cookbookAdapter);
     }
 

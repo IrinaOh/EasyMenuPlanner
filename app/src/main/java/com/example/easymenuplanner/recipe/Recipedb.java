@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "recipe_table")
 public class Recipedb {
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     public int id;
 
     @ColumnInfo(name = "title")
