@@ -33,21 +33,23 @@ public class CookbookViewModel extends AndroidViewModel {
         liveCookbook.setValue(cookbook);
     }
 
-//    public MutableLiveData<List<Recipedb>> findRecipe() {
-//        cookbook = cookbookRepository.findRecipe(recipeName);
-//        liveCookbook.setValue(cookbook);
-//        return liveCookbook;
-//    }
-//
-//    public void sendString(String recipeName) {
-//        this.recipeName = recipeName;
-//    }
+    public void findRecipe(String recipeName) {
+        cookbook = cookbookRepository.findRecipe(recipeName);
+        liveCookbook.setValue(cookbook);
+    }
 
     public MutableLiveData<List<Recipedb>> getCookbook() {
         readFromDatabase();
         return liveCookbook;
     }
 
+//    public MutableLiveData<List<Recipedb>> getLiveData() {
+//        if (liveCookbook == null) {
+//            cookbook = cookbookRepository.getCookbook();
+//            liveCookbook.setValue(cookbook);
+//        }
+//        return liveCookbook;
+//    }
 
 
     private void readFromDatabase() {

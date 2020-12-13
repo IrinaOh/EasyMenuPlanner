@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class CookbookFragment extends Fragment {
     private String searchString;
     private Integer menuKey;
     private Integer recipeKey;
+    private Button searchButton;
 
     public CookbookFragment() {
 
@@ -56,13 +58,14 @@ public class CookbookFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         searchRecipe = view.findViewById(R.id.etSearchCookbook);
-//        searchRecipe.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                cookbookViewModel.sendString(searchRecipe.getText().toString().trim());
-//                //cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
-//            }
-//    });
+        searchButton = view.findViewById(R.id.cookbookSearchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //cookbookViewModel.sendString(searchRecipe.getText().toString().trim());
+                cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
+            }
+    });
 //    v -> {
 //        cookbookViewModel.findRecipe(searchRecipe.getText().toString().trim());
 
