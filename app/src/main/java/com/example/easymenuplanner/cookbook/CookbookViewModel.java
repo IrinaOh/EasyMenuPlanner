@@ -51,7 +51,6 @@ public class CookbookViewModel extends AndroidViewModel {
 //        return liveCookbook;
 //    }
 
-
     private void readFromDatabase() {
         cookbook = cookbookRepository.getCookbook();
         liveCookbook.setValue(cookbook);

@@ -81,11 +81,7 @@ public class SearchRecipeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
-
     }
-
 
     public void searchItem(View view) {
         bt_searchButton.setOnClickListener(new View.OnClickListener() {
