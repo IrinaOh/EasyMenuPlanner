@@ -27,4 +27,6 @@
     <string name="searchButton">Search</string>
     <string name="menuDescription">Descrition</string>
     <string name="menuIngredients">Ingredients</string>
+    <string name="recipeURL"><a href="https://learntodroid.com">LearnToDroid.com</a></string>
+    <string name="hyperlink"><a href="https://learntodroid.com">LearnToDroid.com</a></string>
 </resources>
